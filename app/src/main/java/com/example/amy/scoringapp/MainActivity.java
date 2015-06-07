@@ -20,7 +20,7 @@ public class MainActivity extends ActionBarActivity {
         //mike comments above meow
         System.out.println("Meow.");
 
-        //conflicting with Amy!!!!
+        //conflicting with Amy here!!!!
         System.out.print("This is what Amy had to conflict with");
     }
 
