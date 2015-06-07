@@ -21,6 +21,7 @@ public class MainActivity extends ActionBarActivity {
         System.out.println("Meow.");
 
         //conflicting with Amy!!!!
+        System.out.print("This is for Amy to conflict with");
     }
 
     @Override
