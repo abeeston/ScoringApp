@@ -15,6 +15,7 @@ public class MainActivity extends ActionBarActivity {
 
 
         System.out.println("This is a test from Amy");
+        System.out.println("This is a test from Michael The Great!");
     }
 
     @Override
