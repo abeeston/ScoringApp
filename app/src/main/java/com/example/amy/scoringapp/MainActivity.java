@@ -5,23 +5,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.firebase.client.Firebase;
+
 
 public class MainActivity extends ActionBarActivity {
+
+    private Firebase myFirebaseRef = new Firebase("https://scoresubmission.firebaseIO.com/");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(this);
+
         setContentView(R.layout.activity_main);
-
-
-        System.out.println("This is a test from Amy");
-        System.out.println("This is a test from Michael The Great!");
-        // Mike did not really comment meow and he has a large nose.
-        //mike comments above meow
-        System.out.println("Meow.");
-
-        //conflicting with Amy here!!!!
-        System.out.print("This is what Amy had to conflict with");
     }
 
     @Override
