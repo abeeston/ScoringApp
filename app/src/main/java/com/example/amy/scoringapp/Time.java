@@ -1,31 +1,33 @@
 package com.example.amy.scoringapp;
 
 /**
- * Created by Mark on 6/13/2015.
+ * Created by Amy on 6/10/2015.
  */
 public class Time {
+
     private int hour;
-    private int minute;
+    private int min;
 
-    public Time() {
-        }
-
-    public int getHour() {
-        return hour;
+    Time() {
+        hour = 0;
+        min = 0;
     }
 
-    public void setHour(int hour) {
+    Time(int hour, int min) {
         this.hour = hour;
+        this.min = min;
     }
 
-    public int getMinute() {
-        return minute;
-    }
+    int getHour() { return hour; }
+    int getMin() { return min; }
 
-    public void setMinute(int minute) {
-        this.minute = minute;
-    }
+    void setHour(int hour) { this.hour = hour; }
+    void setMin(int min) { this.min = min; }
 
+    boolean compare(Time time2) {
+
+        return this.hour == time2.hour && this.min == time2.min;
+    }
     @Override
     public String toString() {
         String amPM = new String();
