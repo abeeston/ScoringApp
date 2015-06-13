@@ -32,9 +32,9 @@ public class Time {
     public String toString() {
         String amPM = new String();
         if (hour > 11) {
-            return "The time is: " + (hour - 12) + ":" + minute + " PM";
+            return "The time is: " + (hour - 12) + ":" + min + " PM";
         }
         else
-            return "The time is: " + hour + ":" + minute + " AM";
+            return "The time is: " + hour + ":" + min + " AM";
     }
 }

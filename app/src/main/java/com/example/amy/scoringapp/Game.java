@@ -14,7 +14,7 @@ public class Game {
     public Game() {
         this.courtNum = 101;
         time.setHour(13);
-        time.setMinute(30);
+        time.setMin(30);
     }
 
 
