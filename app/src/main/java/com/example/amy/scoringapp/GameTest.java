@@ -12,4 +12,12 @@ public class GameTest extends InstrumentationTestCase{
         game.setCourtNum(15);
         assertEquals (15, game.getCourtNum());
     }
+
+    public void testTime(){
+        Game game = new Game();
+
+        assertTrue(game.time.toString().equals("The time is: 1:30 PM"));
+    }
+
+
 }
