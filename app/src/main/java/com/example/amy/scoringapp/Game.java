@@ -5,10 +5,11 @@ import java.util.ArrayList;
 /**
  * Created by Mark on 6/10/2015.
  */
-public class Game {
+public class Game implements DatabaseObserver{
     private int courtNum;
     String location;
     protected Time time;
+    ArrayList<Team> teams;
 
 
     public Game() {
@@ -25,5 +26,29 @@ public class Game {
 
     public void setCourtNum(int courtNum) {
         this.courtNum = courtNum;
+    }
+
+    public void readSubmit() {
+
+    }
+
+
+    @Override
+    public String pullData() {
+        return null;
+    }
+
+    @Override
+    public void pushData() {
+
+    }
+
+    @Override
+    public void display() {
+
+    }
+
+    public void sendNotificaion() {
+
     }
 }
