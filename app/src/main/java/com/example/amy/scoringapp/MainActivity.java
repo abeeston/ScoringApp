@@ -10,14 +10,18 @@ import com.firebase.client.Firebase;
 
 public class MainActivity extends ActionBarActivity {
 
-    private Firebase myFirebaseRef = new Firebase("https://scoresubmission.firebaseIO.com/");
+    private Firebase myFirebaseRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
-
+        myFirebaseRef = new Firebase("https://popping-torch-5466.firebaseio.com/");
         setContentView(R.layout.activity_main);
+
+
+        myFirebaseRef.child("message").setValue("Do you have data? You'll love Firebase.");
+        System.out.println("Checkitchekcititehiosadhfoihadsiohf");
     }
 
     @Override

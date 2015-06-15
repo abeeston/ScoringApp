@@ -7,10 +7,10 @@ import android.test.InstrumentationTestCase;
  */
 public class GameTest extends InstrumentationTestCase{
     public void testCourtNum(){
-//        Game game = new Game();
-//
-//        game.setCourtNum(15);
-//        assertEquals (15, game.getCourtNum());
+        Game game = new Game();
+
+        game.setCourtNum(15);
+        assertEquals (15, game.getCourtNum());
     }
 
     public void testTime(){
