@@ -7,10 +7,14 @@ import android.view.MenuItem;
 
 import com.firebase.client.Firebase;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends ActionBarActivity {
 
     private Firebase myFirebaseRef;
+    private ArrayList<Tournament> available;
+    String tournaments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,5 +49,19 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onClickReturnScore(){
+
+        return true;
+    }
+
+    public boolean onClickNotificationBoard(){
+
+        return true;
+    }
+
+    public void onChangeActiveTournament(){
+
     }
 }
