@@ -33,5 +33,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.1.1'
 
     // Firebase dependency
-    compile 'com.firebase:firebase-client-android:2.3.0+'
+    compile 'com.firebase:firebase-client-android:2.2.3+'
 }

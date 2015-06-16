@@ -4,8 +4,9 @@ import android.test.InstrumentationTestCase;
 
 /**
  * Created by Amy on 6/10/2015.
+ * Tests the team class
  */
-public class TeamTest extends InstrumentationTestCase{
+public class TeamTest extends InstrumentationTestCase {
 
     public void testName() {
         Team team1 = new Team();
