@@ -83,6 +83,8 @@ public class MainActivity extends ActionBarActivity {
     public void onClickSubmitScore(View view) {
         // Create an intent to put the tournament in and send it to the ScoreSubmit class and activity
         Intent intent = new Intent(this, ScoreSubmit.class);
-
+        //intent.putExtra("Spinner", String.valueOf(spinner.getFocusedChild()));
+        startActivity(intent);
+        System.out.println("entering submit score");
     }
 }
