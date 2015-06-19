@@ -18,4 +18,10 @@
         <item>11</item>
         <item>12</item>
     </string-array>
+    <string name="title_activity_admin">AdminActivity</string>
+    <string name="title_activity_admin_login">AdminLogin</string>
+    <string name="title_activity_login_error">LoginError</string>
+    <string name="title_activity_notification_board">NotificationBoard</string>
+    <string name="title_activity_tournament_password">TournamentPassword</string>
+    <string name="title_activity_enter_score">EnterScore</string>
 </resources>
