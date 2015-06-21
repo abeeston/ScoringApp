@@ -60,6 +60,7 @@ public class Tournament implements DatabaseObserver {
     @Override
     public void pushData() {
 
+
     }
 
     @Override
