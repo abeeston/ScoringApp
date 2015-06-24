@@ -18,6 +18,12 @@
         <item>11</item>
         <item>12</item>
     </string-array>
+    <string-array name="minute_array">
+        <item>00</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+    </string-array>
     <string name="title_activity_admin">AdminActivity</string>
     <string name="title_activity_admin_login">AdminLogin</string>
     <string name="title_activity_login_error">LoginError</string>

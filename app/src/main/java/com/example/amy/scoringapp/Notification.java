@@ -23,7 +23,7 @@ public class Notification implements DatabaseObserver{
     }
 
     @Override
-    public void pushData() {
+    public void pushData(String url) {
 
     }
 

@@ -9,10 +9,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -36,12 +41,52 @@ public class MainActivity extends ActionBarActivity {
         myFirebaseRef.child("message").setValue("Do you have data? You'll love Firebase.");
         System.out.println("Checkitchekcititehiosadhfoihadsiohf");
 
-        available = new ArrayList<>();
-        spinner = (Spinner) findViewById(R.id.spinner);
+        //available = new ArrayList<>();
+        List<String> test = new ArrayList<>();
+        test.add("Tahoe");
+        test.add("Sacramento");
+        test.add("Chico");
 
-        // To do: fill the available list with the list of available tournaments and fill the
-        // spinner with this information
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>();
+        spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, test); // test will be "available" list
+        spinner.setAdapter(adapter);
+
+        ObserveTournament();
+
+        //Tournament tournament = new Tournament("June 5th, 2015", "Chico", "password");
+        //tournament.pushData("https://scoresubmission.firebaseio.com/");
+    }
+
+    public void ObserveTournament() {
+        Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/Tournaments");
+        Query queryRef = ref.orderByKey();
+
+        queryRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                System.out.println(dataSnapshot.getKey());
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -82,22 +127,27 @@ public class MainActivity extends ActionBarActivity {
 
     public void onClickSubmitScore(View view) {
         // Create an intent to put the tournament in and send it to the ScoreSubmit class and activity
-        Intent intent = new Intent(this, EnterScore.class);
-        //intent.putExtra("Spinner", String.valueOf(spinner.getFocusedChild()));
+        Intent intent = new Intent(this, TournamentPassword.class);
+
+        String spinValue = spinner.getSelectedItem().toString();
+        intent.putExtra("Spinner", spinValue);
+        tournament = "Tahoe";
+        intent.putExtra("TournamentName", tournament);
         startActivity(intent);
-        System.out.println("entering submit score");
     }
 
     public void onClickAdmin(View view) {
         Intent intent = new Intent(this, AdminLogin.class);
         startActivity(intent);
-        System.out.println("entering submit score");
     }
 
     public void onClickNotificationBoard(View view) {
         Intent intent = new Intent(this, NotificationBoard.class);
-        //intent.putExtra("Spinner", String.valueOf(spinner.getFocusedChild()));
+
+        String spinValue = spinner.getSelectedItem().toString();
+        intent.putExtra("Spinner", spinValue);
+        tournament = "Tahoe";
+        intent.putExtra("TournamentName", tournament);
         startActivity(intent);
-        System.out.println("entering submit score");
     }
 }

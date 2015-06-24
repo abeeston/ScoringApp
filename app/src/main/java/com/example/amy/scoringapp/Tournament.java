@@ -1,5 +1,7 @@
 package com.example.amy.scoringapp;
 
+import com.firebase.client.Firebase;
+
 import java.util.Date;
 import java.util.List;
 
@@ -10,15 +12,19 @@ public class Tournament implements DatabaseObserver {
     public Tournament() {
     }
 
-    public Tournament(Date date, String city) {
+    public Tournament(String date, String city, String password) {
+        ID = 1;
         this.date = date;
         this.city = city;
+        this.password = password;
+        this.games = null;
     }
 
     private String city;
-    private Date date;
+    private String date;
     private int ID;
     private List<String> games;
+    private String password;
 
     public String getCity() {
         return city;
@@ -28,11 +34,11 @@ public class Tournament implements DatabaseObserver {
         this.city = city;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -58,9 +64,14 @@ public class Tournament implements DatabaseObserver {
     }
 
     @Override
-    public void pushData() {
+    public void pushData(String url) {
+        //Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/");
+        Firebase ref = new Firebase(url);
 
 
+        ref.child("Tournaments/" + ID + "/date").setValue(date);
+        ref.child("Tournaments/" + ID + "/location").setValue(city);
+        ref.child("Tournaments/" + ID + "/password").setValue(password);
     }
 
     @Override

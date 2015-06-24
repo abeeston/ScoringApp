@@ -4,6 +4,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 
 public class EnterScore extends ActionBarActivity {
@@ -12,6 +14,16 @@ public class EnterScore extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_score);
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinnerHour);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.hours_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        Spinner spinnerMin = (Spinner) findViewById(R.id.spinnerMinute);
+        ArrayAdapter<CharSequence> adapterMin = ArrayAdapter.createFromResource(this, R.array.minute_array, android.R.layout.simple_spinner_item);
+        adapterMin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerMin.setAdapter(adapterMin);
     }
 
     @Override

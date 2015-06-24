@@ -1,9 +1,11 @@
 package com.example.amy.scoringapp;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class TournamentPassword extends ActionBarActivity {
@@ -34,5 +36,12 @@ public class TournamentPassword extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClickSubmitTournamentPassword(View view) {
+        // Create an intent to put the tournament in and send it to the ScoreSubmit class and activity
+        Intent intent = new Intent(this, EnterScore.class);
+        //intent.putExtra("Spinner", String.valueOf(spinner.getFocusedChild()));
+        startActivity(intent);
     }
 }

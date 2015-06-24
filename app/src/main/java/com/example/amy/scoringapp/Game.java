@@ -39,7 +39,7 @@ public class Game implements DatabaseObserver{
     }
 
     @Override
-    public void pushData() {
+    public void pushData(String url) {
 
     }
 

@@ -23,11 +23,6 @@ public class CreateTournament {
 
 
     public void onSubmit(){
-        Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/");
-
-        ref.child("Tournaments/01/date").setValue("02/18/2020");
-        ref.child("Tournaments/01/location").setValue("Guantanamo Bay, Cuba");
-        ref.child("Tournaments/01/password").setValue("OrangeHippo");
 
     }
 }

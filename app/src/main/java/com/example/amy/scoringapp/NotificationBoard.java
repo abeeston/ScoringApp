@@ -1,9 +1,11 @@
 package com.example.amy.scoringapp;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class NotificationBoard extends ActionBarActivity {
@@ -12,6 +14,14 @@ public class NotificationBoard extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_board);
+
+        Intent intent = getIntent();
+
+        String tournament = intent.getStringExtra("TournamentName");
+        String spinValue = intent.getStringExtra("Spinner");
+
+        TextView t = (TextView) findViewById(R.id.textView17);
+        t.setText(spinValue);
     }
 
     @Override
