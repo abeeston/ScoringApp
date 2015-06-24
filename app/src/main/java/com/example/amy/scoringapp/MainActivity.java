@@ -51,13 +51,13 @@ public class MainActivity extends ActionBarActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, test); // test will be "available" list
         spinner.setAdapter(adapter);
 
-        ObserveTournament();
+        observeTournament();
 
         //Tournament tournament = new Tournament("June 5th, 2015", "Chico", "password");
         //tournament.pushData("https://scoresubmission.firebaseio.com/");
     }
 
-    public void ObserveTournament() {
+    public void observeTournament() {
         Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/Tournaments");
         Query queryRef = ref.orderByKey();
 
