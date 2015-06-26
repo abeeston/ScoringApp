@@ -46,17 +46,16 @@ public class MainActivity extends ActionBarActivity {
 
         available = new ArrayList<>();
         List<String> test = new ArrayList<>();
-        for (Tournament t : available) {
-            test.add (t.display());
-        }
-//        test.add("Tahoe");
-//        test.add("Sacramento");
-//        test.add("Chico");
+        test.add("Tahoe");
+        test.add("Sacramento");
+        test.add("Chico");
 
 
         spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, test); // test will be "available" list
         spinner.setAdapter(adapter);
+
+        observeTournament();
 
         //Tournament tournament = new Tournament("June 5th, 2015", "Chico", "password");
         //tournament.pushData("https://scoresubmission.firebaseio.com/");

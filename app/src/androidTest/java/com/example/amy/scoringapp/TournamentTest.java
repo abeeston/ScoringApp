@@ -20,7 +20,7 @@ public class TournamentTest extends InstrumentationTestCase {
 
     public void testDate() {
         Tournament tourn = new Tournament();
-        Date date = new Date();
+        String date = "01/22/89";
 
         tourn.setDate(date);
         assertEquals(date, tourn.getDate());
