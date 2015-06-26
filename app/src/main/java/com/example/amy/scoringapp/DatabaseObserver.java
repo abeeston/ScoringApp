@@ -7,5 +7,5 @@ public interface DatabaseObserver {
 
     public String pullData();
     public void pushData(String url);
-    public void display();
+    public String display();
 }

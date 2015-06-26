@@ -2,7 +2,6 @@ package com.example.amy.scoringapp;
 
 import com.firebase.client.Firebase;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,8 +11,8 @@ public class Tournament implements DatabaseObserver {
     public Tournament() {
     }
 
-    public Tournament(String date, String city, String password) {
-        ID = 1;
+    public Tournament(String id, String date, String city, String password) {
+        ID = id;
         this.date = date;
         this.city = city;
         this.password = password;
@@ -22,7 +21,7 @@ public class Tournament implements DatabaseObserver {
 
     private String city;
     private String date;
-    private int ID;
+    private String ID;
     private List<String> games;
     private String password;
 
@@ -42,11 +41,11 @@ public class Tournament implements DatabaseObserver {
         this.date = date;
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
@@ -75,8 +74,8 @@ public class Tournament implements DatabaseObserver {
     }
 
     @Override
-    public void display() {
-
+    public String display() {
+        return city + "   " + date;
     }
 
 }

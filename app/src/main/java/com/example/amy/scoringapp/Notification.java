@@ -27,7 +27,8 @@ public class Notification implements DatabaseObserver{
 
     }
 
-    public void display(){
+    public String display(){
 
+        return null;
     }
 }

@@ -44,8 +44,9 @@ public class Game implements DatabaseObserver{
     }
 
     @Override
-    public void display() {
+    public String display() {
 
+        return null;
     }
 
     public void sendNotificaion() {

@@ -42,17 +42,21 @@ public class MainActivity extends ActionBarActivity {
         // Get the data from Firebase
         myFirebaseRef.child("message").setValue("Do you have data? You'll love Firebase.");
 
-        //available = new ArrayList<>();
+        observeTournament();
+
+        available = new ArrayList<>();
         List<String> test = new ArrayList<>();
-        test.add("Tahoe");
-        test.add("Sacramento");
-        test.add("Chico");
+        for (Tournament t : available) {
+            test.add (t.display());
+        }
+//        test.add("Tahoe");
+//        test.add("Sacramento");
+//        test.add("Chico");
+
 
         spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, test); // test will be "available" list
         spinner.setAdapter(adapter);
-
-        observeTournament();
 
         //Tournament tournament = new Tournament("June 5th, 2015", "Chico", "password");
         //tournament.pushData("https://scoresubmission.firebaseio.com/");
@@ -66,12 +70,14 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Map<String, Object> newPost = (HashMap<String, Object>) dataSnapshot.getValue();
-                //System.out.println("The key is: " + dataSnapshot.getKey());
-                //System.out.println("The value is: " + dataSnapshot.getValue());
 
-                for (String key : newPost.keySet()) {
-                    System.out.println(newPost.get(key));
-                }
+                String id = dataSnapshot.getKey();
+                String date = (String) newPost.get("date");
+                String location = (String) newPost.get("location");
+                String password = (String) newPost.get("password");
+
+                Tournament t = new Tournament(id, date, location, password);
+                available.add(t);
             }
 
             @Override
