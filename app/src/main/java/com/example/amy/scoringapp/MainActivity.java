@@ -44,6 +44,8 @@ public class MainActivity extends ActionBarActivity {
 
         //available = new ArrayList<>();
         List<String> test = new ArrayList<>();
+
+        for()
         test.add("Tahoe");
         test.add("Sacramento");
         test.add("Chico");
