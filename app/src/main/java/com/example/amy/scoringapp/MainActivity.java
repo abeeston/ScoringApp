@@ -18,7 +18,9 @@ import com.firebase.client.Query;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -39,7 +41,6 @@ public class MainActivity extends ActionBarActivity {
 
         // Get the data from Firebase
         myFirebaseRef.child("message").setValue("Do you have data? You'll love Firebase.");
-        System.out.println("Checkitchekcititehiosadhfoihadsiohf");
 
         //available = new ArrayList<>();
         List<String> test = new ArrayList<>();
@@ -64,9 +65,13 @@ public class MainActivity extends ActionBarActivity {
         queryRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                System.out.println("The key is: " + dataSnapshot.getKey());
-                System.out.println("The value is: " + dataSnapshot.getValue());
-                System.out.println("The value is: " + dataSnapshot.getChildren());
+                Map<String, Object> newPost = (HashMap<String, Object>) dataSnapshot.getValue();
+                //System.out.println("The key is: " + dataSnapshot.getKey());
+                //System.out.println("The value is: " + dataSnapshot.getValue());
+
+                for (String key : newPost.keySet()) {
+                    System.out.println(newPost.get(key));
+                }
             }
 
             @Override
