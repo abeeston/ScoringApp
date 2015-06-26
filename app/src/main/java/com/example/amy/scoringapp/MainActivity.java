@@ -27,7 +27,7 @@ public class MainActivity extends ActionBarActivity {
 
     private Firebase myFirebaseRef;          // For connecting to Firebase
     private List<Tournament> available;      // The list of tournaments to populate the spinner
-    String tournament;                       // The active tournament
+    Tournament tournament;                   // The active tournament
     Spinner spinner;                         // Our spinner containing the tournaments
 
     @Override
@@ -42,20 +42,22 @@ public class MainActivity extends ActionBarActivity {
         // Get the data from Firebase
         myFirebaseRef.child("message").setValue("Do you have data? You'll love Firebase.");
 
+        available = new ArrayList<>();
         observeTournament();
 
-        available = new ArrayList<>();
+        System.out.println("PRINTING STUFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
+
         List<String> test = new ArrayList<>();
-        test.add("Tahoe");
-        test.add("Sacramento");
-        test.add("Chico");
+        for (Tournament t : available) {
+            System.out.println(t.toString());
+            test.add(t.toString());
+        }
+
 
 
         spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, test); // test will be "available" list
         spinner.setAdapter(adapter);
-
-        observeTournament();
 
         //Tournament tournament = new Tournament("June 5th, 2015", "Chico", "password");
         //tournament.pushData("https://scoresubmission.firebaseio.com/");
@@ -75,8 +77,12 @@ public class MainActivity extends ActionBarActivity {
                 String location = (String) newPost.get("location");
                 String password = (String) newPost.get("password");
 
+
                 Tournament t = new Tournament(id, date, location, password);
+                System.out.println("The TOURNAMENT ISSSS" + t.display());
                 available.add(t);
+
+                newPost.clear();
             }
 
             @Override
@@ -143,8 +149,8 @@ public class MainActivity extends ActionBarActivity {
 
         String spinValue = spinner.getSelectedItem().toString();
         intent.putExtra("Spinner", spinValue);
-        tournament = "Tahoe";
-        intent.putExtra("TournamentName", tournament);
+        //tournament = "Tahoe";
+        //intent.putExtra("TournamentName", tournament);
         startActivity(intent);
     }
 
@@ -158,8 +164,8 @@ public class MainActivity extends ActionBarActivity {
 
         String spinValue = spinner.getSelectedItem().toString();
         intent.putExtra("Spinner", spinValue);
-        tournament = "Tahoe";
-        intent.putExtra("TournamentName", tournament);
+        //tournament = "Tahoe";
+        //intent.putExtra("TournamentName", tournament);
         startActivity(intent);
     }
 }

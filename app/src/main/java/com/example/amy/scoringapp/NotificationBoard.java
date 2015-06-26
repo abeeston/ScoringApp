@@ -17,7 +17,7 @@ public class NotificationBoard extends ActionBarActivity {
 
         Intent intent = getIntent();
 
-        String tournament = intent.getStringExtra("TournamentName");
+        //String tournament = intent.getStringExtra("TournamentName");
         String spinValue = intent.getStringExtra("Spinner");
 
         TextView t = (TextView) findViewById(R.id.textView17);

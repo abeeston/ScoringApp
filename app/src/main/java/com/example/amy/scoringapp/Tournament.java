@@ -75,7 +75,12 @@ public class Tournament implements DatabaseObserver {
 
     @Override
     public String display() {
+        //return "Test!";
         return city + "   " + date;
     }
 
+    @Override
+    public String toString() {
+        return "ToSTRING!";
+    }
 }
