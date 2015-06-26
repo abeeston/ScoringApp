@@ -64,7 +64,9 @@ public class MainActivity extends ActionBarActivity {
         queryRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                System.out.println(dataSnapshot.getKey());
+                System.out.println("The key is: " + dataSnapshot.getKey());
+                System.out.println("The value is: " + dataSnapshot.getValue());
+                System.out.println("The value is: " + dataSnapshot.getChildren());
             }
 
             @Override
