@@ -40,23 +40,62 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         // Get the data from Firebase
-        myFirebaseRef.child("message").setValue("Do you have data? You'll love Firebase.");
+        //myFirebaseRef.child("message").setValue("Do you have data? You'll love Firebase.");
 
+        // Initialize the lists
         available = new ArrayList<>();
-        observeTournament();
+        List<String> sList = new ArrayList<>();
 
-        System.out.println("PRINTING STUFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
+        // Fill the list of available tournaments
+        Runnable r1 = new Runnable() {
 
-        List<String> test = new ArrayList<>();
-        for (Tournament t : available) {
-            System.out.println(t.toString());
-            test.add(t.toString());
+            @Override
+            public void run() {
+                observeTournament();
+            }
+        };
+        //observeTournament();
+
+        Runnable r2 = new Runnable() {
+
+            @Override
+            public void run() {
+                for (int i = 0; i < 100; i++) {
+                    System.out.println(i);
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+
+        Thread t1 = new Thread(r1);
+        t1.run();
+
+        Thread t2 = new Thread(r2);
+        t2.run();
+
+        try {
+            t1.join();
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
+        System.out.println("PRINTING STUFF");
+        int count = 0;
 
+        // Go through all of the
+        for (Tournament t : available) {
+            System.out.println("IN AVAILABLE count == " + count + " : "  + t.toString());
+            sList.add(t.toString());
+            count++;
+        }
 
         spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, test); // test will be "available" list
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sList); // test will be "available" list
         spinner.setAdapter(adapter);
 
         //Tournament tournament = new Tournament("June 5th, 2015", "Chico", "password");
@@ -79,8 +118,13 @@ public class MainActivity extends ActionBarActivity {
 
 
                 Tournament t = new Tournament(id, date, location, password);
-                System.out.println("The TOURNAMENT ISSSS" + t.display());
-                available.add(t);
+                System.out.println("The TOURNAMENT: " + t.display());
+                MainActivity.this.available.add(t);
+
+                for (Tournament test : available) {
+                    System.out.println("Here is what's in the list: " + test.display());
+                }
+
 
                 newPost.clear();
             }
