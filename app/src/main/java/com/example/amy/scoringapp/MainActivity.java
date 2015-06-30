@@ -1,6 +1,9 @@
 package com.example.amy.scoringapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -29,6 +32,9 @@ public class MainActivity extends ActionBarActivity {
     private List<Tournament> available;      // The list of tournaments to populate the spinner
     Tournament tournament;                   // The active tournament
     Spinner spinner;                         // Our spinner containing the tournaments
+    private static Context context; ///// NOTE: there was a firebase context?
+    private Handler handler = new Handler();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,8 @@ public class MainActivity extends ActionBarActivity {
         Firebase.setAndroidContext(this);
         myFirebaseRef = new Firebase("https://popping-torch-5466.firebaseio.com/");
         setContentView(R.layout.activity_main);
+        MainActivity.context = MainActivity.this.getApplicationContext();
+
 
         // Get the data from Firebase
         observeTournament();
@@ -59,6 +67,14 @@ public class MainActivity extends ActionBarActivity {
         spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sList); // test will be "available" list
         spinner.setAdapter(adapter);
+
+        Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                // put code here to change the GUI
+            }
+        });
 
         //Tournament tournament = new Tournament("June 5th, 2015", "Chico", "password");
         //tournament.pushData("https://scoresubmission.firebaseio.com/");
@@ -85,6 +101,7 @@ public class MainActivity extends ActionBarActivity {
 
                 for (Tournament test : available) {
                     System.out.println("Here is what's in the list: " + test.display());
+                    // add this one to a drop down
                 }
 
 
