@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import com.firebase.client.ChildEventListener;
@@ -30,11 +31,11 @@ public class MainActivity extends ActionBarActivity {
 
     private Firebase myFirebaseRef;          // For connecting to Firebase
     private List<Tournament> available;      // The list of tournaments to populate the spinner
-    Tournament tournament;                   // The active tournament
+    //Tournament tournament;                   // The active tournament
     Spinner spinner;                         // Our spinner containing the tournaments
     private static Context context; ///// NOTE: there was a firebase context?
     private Handler handler = new Handler();
-
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         MainActivity.context = MainActivity.this.getApplicationContext();
 
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         // Get the data from Firebase
         observeTournament();
@@ -73,6 +75,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void run() {
                 // put code here to change the GUI
+                progressBar.setProgress(100); // How will we set this?
             }
         });
 
@@ -87,6 +90,7 @@ public class MainActivity extends ActionBarActivity {
         queryRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                // Read the data into a map
                 Map<String, Object> newPost = (HashMap<String, Object>) dataSnapshot.getValue();
 
                 String id = dataSnapshot.getKey();
@@ -94,23 +98,22 @@ public class MainActivity extends ActionBarActivity {
                 String location = (String) newPost.get("location");
                 String password = (String) newPost.get("password");
 
-
+                // Create the tournament and add it to the list
                 Tournament t = new Tournament(id, date, location, password);
                 System.out.println("The TOURNAMENT: " + t.display());
-                MainActivity.this.available.add(t);
+                //MainActivity.this.available.add(t);
+                available.add(t);
 
+                // Just testing...
                 for (Tournament test : available) {
                     System.out.println("Here is what's in the list: " + test.display());
-                    // add this one to a drop down
                 }
 
-
+                // Clear the map between reads
                 newPost.clear();
 
                 // Call the method to populate the spinner
                 fillSpinner();
-
-                // handler.post
             }
 
             @Override

@@ -30,6 +30,15 @@ public class Tournament implements DatabaseObserver {
         this.games = null;
     }
 
+    //Non default constructor for loading from the database
+    public Tournament(String ID, String date, String city, String password) {
+        this.ID = ID;
+        this.date = date;
+        this.city = city;
+        this.password = password;
+        this.games = null;
+    }
+
     //private variables
     private String city;
     private String date;

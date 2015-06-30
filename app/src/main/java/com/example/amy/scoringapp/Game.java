@@ -1,8 +1,11 @@
 package com.example.amy.scoringapp;
 
+import com.firebase.client.Firebase;
+
 import java.util.ArrayList;
 
 /**
+ * Contains a single game
  * Created by Mark on 6/10/2015.
  */
 public class Game implements DatabaseObserver{
@@ -32,14 +35,18 @@ public class Game implements DatabaseObserver{
 
     }
 
-
     @Override
-    public String pullData() {
-        return null;
+    public void pullData(Firebase url) {
+
     }
 
     @Override
-    public void pushData(String url) {
+    public void updateData(Firebase url) {
+
+    }
+
+    @Override
+    public void pushData(Firebase url) {
 
     }
 
