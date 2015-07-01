@@ -6,9 +6,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-
+/**
+ *  Admin Activity controls things that only the admin can do.
+ *
+ */
 public class AdminActivity extends ActionBarActivity {
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
