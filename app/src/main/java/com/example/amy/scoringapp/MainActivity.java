@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
 
     /**
      * Initialized the variables and calls observeTournament to fill the spinner
-     * @param savedInstanceState
+     * @param savedInstanceState The saved instance state for loading
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,24 +131,68 @@ public class MainActivity extends ActionBarActivity {
                 // Call the method to populate the spinner
                 fillSpinner();
             }
+
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
             }
+
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
 
             }
+
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
             }
+
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
             }
         });
     }
+
+    /**
+     * Brings the user to the SubmitScore login activity and sends the selected tournament
+     * @param view For onclick methods
+     */
+    public void onClickSubmitScore(View view) {
+        // Create an intent to put the tournament in and send it to the ScoreSubmit class and activity
+        Intent intent = new Intent(this, TournamentPassword.class);
+
+        String spinValue = spinner.getSelectedItem().toString();
+        intent.putExtra("Spinner", spinValue);
+        //tournament = "Tahoe";
+        //intent.putExtra("TournamentName", tournament);
+        startActivity(intent);
+    }
+
+    /**
+     * Brings the user to the Admin login page
+     * @param view For onclick methods
+     */
+    public void onClickAdmin(View view) {
+        Intent intent = new Intent(this, AdminLogin.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Brings the user to the NotificationBoard activity to view past games and passes the active
+     * tournament
+     * @param view For onclick methods
+     */
+    public void onClickNotificationBoard(View view) {
+        Intent intent = new Intent(this, NotificationBoard.class);
+
+        String spinValue = spinner.getSelectedItem().toString();
+        intent.putExtra("Spinner", spinValue);
+        //tournament = "Tahoe";
+        //intent.putExtra("TournamentName", tournament);
+        startActivity(intent);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -170,45 +214,5 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public boolean onClickReturnScore(){
-
-        return true;
-    }
-
-    public boolean onClickNotificationBoard(){
-
-        return true;
-    }
-
-    public void onChangeActiveTournament(){
-
-    }
-
-    public void onClickSubmitScore(View view) {
-        // Create an intent to put the tournament in and send it to the ScoreSubmit class and activity
-        Intent intent = new Intent(this, TournamentPassword.class);
-
-        String spinValue = spinner.getSelectedItem().toString();
-        intent.putExtra("Spinner", spinValue);
-        //tournament = "Tahoe";
-        //intent.putExtra("TournamentName", tournament);
-        startActivity(intent);
-    }
-
-    public void onClickAdmin(View view) {
-        Intent intent = new Intent(this, AdminLogin.class);
-        startActivity(intent);
-    }
-
-    public void onClickNotificationBoard(View view) {
-        Intent intent = new Intent(this, NotificationBoard.class);
-
-        String spinValue = spinner.getSelectedItem().toString();
-        intent.putExtra("Spinner", spinValue);
-        //tournament = "Tahoe";
-        //intent.putExtra("TournamentName", tournament);
-        startActivity(intent);
     }
 }
