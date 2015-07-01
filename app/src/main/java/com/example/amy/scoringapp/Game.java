@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 /**
  * Contains a single game
- * Created by Mark on 6/10/2015.
  */
 public class Game implements DatabaseObserver{
     private int courtNum;
