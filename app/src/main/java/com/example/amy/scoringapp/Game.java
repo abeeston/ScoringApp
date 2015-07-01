@@ -14,32 +14,43 @@ public class Game implements DatabaseObserver{
     protected Time time;
     ArrayList<Team> teams;
 
-
+    /**
+     * Default constructor; sets all parameters to court 100 at 12:00 PM
+     */
     public Game() {
-        this.courtNum = 101;
-        time.setHour(13);
-        time.setMin(30);
+        this.courtNum = 100;
+        time.setHour(12);
+        time.setMin(00);
     }
 
-
-
+    /** Get court number */
     public int getCourtNum() {
         return courtNum;
     }
 
+    /** Set the court number */
     public void setCourtNum(int courtNum) {
         this.courtNum = courtNum;
     }
 
-    public void readSubmit() {
+    /**Submit the score and date */
+     public void readSubmit() {
 
     }
 
+    /**
+     * Pull the data from Firebase
+     * @param url Firebase URL
+     */
     @Override
     public void pullData(Firebase url) {
 
     }
 
+    /**
+     * Updates the data in Firebase.
+     * @param url Firebase URL
+     */
     @Override
     public void updateData(Firebase url) {
 

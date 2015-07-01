@@ -22,7 +22,7 @@ public class Tournament implements DatabaseObserver {
         this.games = null;
     }
 
-    //Non default constructor. Games must be added after creation.
+    /**Non default constructor. Games must be added after creation.*/
     public Tournament(String date, String city, String password) {
         this.date = date;
         this.city = city;
