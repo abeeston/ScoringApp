@@ -1,5 +1,7 @@
 package com.example.amy.scoringapp;
 
+import com.firebase.client.Firebase;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -18,12 +20,17 @@ public class Notification implements DatabaseObserver{
     private Game content;
 
     @Override
-    public String pullData() {
-        return null;
+    public void pullData(Firebase url) {
+
     }
 
     @Override
-    public void pushData(String url) {
+    public void updateData(Firebase url) {
+
+    }
+
+    @Override
+    public void pushData(Firebase url) {
 
     }
 
