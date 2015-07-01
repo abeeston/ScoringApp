@@ -65,31 +65,28 @@ public class MainActivity extends ActionBarActivity {
      * Fills the spinner with tournaments from the database
      */
     public void fillSpinner() {
-        System.out.println("In fill spinner");
-        List<String> sList = new ArrayList<>();
+        List<String> stringList = new ArrayList<>();
 
         // Go through all of the tournaments in available
         int count = 0;
         for (Tournament t : available) {
-            System.out.println("IN AVAILABLE count == " + count + " : "  + t.toString());
-            sList.add(t.display());
+            stringList.add(t.display());
             count++;
         }
+        final int countFinal = count;
 
-        // Use the arrayadapter to change the contents of the spinner
+        // Use the array adapter to change the contents of the spinner
         spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sList); // test will be "available" list
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, stringList); // test will be "available" list
         spinner.setAdapter(adapter);
 
-        //Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                // put code here to change the GUI
-                for (int i = 0; i < 100; i++) {
-
-                    progressBar.setProgress(i * 10); // How will we set this?
+                for (int i = 0; i < countFinal; i++) {
+                    progressBar.setProgress(i * 10);
                 }
+                progressBar.setProgress(0);
             }
         });
     }
@@ -119,11 +116,6 @@ public class MainActivity extends ActionBarActivity {
                 Tournament t = new Tournament(id, date, location, password);
                 //MainActivity.this.available.add(t);
                 available.add(t);
-
-                // Just testing...
-                for (Tournament test : available) {
-                    System.out.println("Here is what's in the list: " + test.display());
-                }
 
                 // Clear the map between reads
                 newPost.clear();
@@ -164,8 +156,6 @@ public class MainActivity extends ActionBarActivity {
 
         String spinValue = spinner.getSelectedItem().toString();
         intent.putExtra("Spinner", spinValue);
-        //tournament = "Tahoe";
-        //intent.putExtra("TournamentName", tournament);
         startActivity(intent);
     }
 
