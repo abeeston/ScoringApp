@@ -6,14 +6,14 @@ package com.example.amy.scoringapp;
 public class Team {
 
     private String name;
-    private int score;
+    private String score;
 
     Team() {
         name = null;
-        score = 0;
+        score = null;
     }
 
-    Team(String name, int score) {
+    Team(String name, String score) {
         this.name = name;
         this.score = score;
     }
@@ -21,7 +21,7 @@ public class Team {
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
-    public int getScore() { return score; }
-    public void setScore(int score) { this.score = score; }
+    public String getScore() { return score; }
+    public void setScore(String score) { this.score = score; }
 
 }

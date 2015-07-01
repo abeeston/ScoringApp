@@ -88,13 +88,10 @@ public class Tournament implements DatabaseObserver {
      */
     @Override
     public void updateData(Firebase url) {
-        //creates reference to Tournments
-        Firebase ref = url.child("Tournaments");
-
         //change values in Firebase to current values in this class
-        ref.child("Tournaments/" + ID + "/date").setValue(date);
-        ref.child("Tournaments/" + ID + "/location").setValue(city);
-        ref.child("Tournaments/" + ID + "/password").setValue(password);
+        url.child("Tournaments/" + ID + "/date").setValue(date);
+        url.child("Tournaments/" + ID + "/location").setValue(city);
+        url.child("Tournaments/" + ID + "/password").setValue(password);
     }
 
     /**

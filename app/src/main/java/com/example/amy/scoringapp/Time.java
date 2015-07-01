@@ -5,29 +5,47 @@ package com.example.amy.scoringapp;
  */
 public class Time {
 
-    private int hour;
-    private int min;
+    private String hour;
+    private String min;
 
     Time() {
-        hour = 0;
-        min = 0;
+        hour = "00";
+        min = "00";
     }
 
-    Time(int hour, int min) {
-        this.hour = hour;
+    Time(String hour, String min, String amPm) {
+        if(amPm == "pm") {
+            this.hour = Integer.toString(Integer.parseInt(hour) + 12);
+        }
+        else {
+            this.hour = hour;
+        }
         this.min = min;
     }
 
-    int getHour() { return hour; }
-    int getMin() { return min; }
+    String getHour() { return hour; }
+    String getMin() { return min; }
 
-    void setHour(int hour) { this.hour = hour; }
-    void setMin(int min) { this.min = min; }
+    void setHour(String hour) { this.hour = hour; }
+    void setMin(String min) { this.min = min; }
 
     boolean compare(Time time2) {
 
         return this.hour == time2.hour && this.min == time2.min;
     }
+
+    public String StandardTime() {
+        if((Integer.parseInt(hour)) > 12) {
+            return (Integer.toString(Integer.parseInt(hour) - 12)) + ":" + min + " pm";
+        }
+
+        return hour + ":" + min + " am";
+    }
+
+    public String MilitaryTime() {
+        return hour + min;
+    }
+    /*
     @Override
     public String toString() {
         String amPM = new String();
@@ -36,5 +54,5 @@ public class Time {
         }
         else
             return "The time is: " + hour + ":" + min + " AM";
-    }
+    }*/
 }
