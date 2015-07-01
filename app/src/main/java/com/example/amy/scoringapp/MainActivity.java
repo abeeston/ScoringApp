@@ -27,7 +27,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * The main screen of the app. Here the user determines which tournament they will add a game to
+ * or view the associated games and can log in as an administrator.
  */
 public class MainActivity extends ActionBarActivity {
 
@@ -39,6 +40,10 @@ public class MainActivity extends ActionBarActivity {
     private Handler handler = new Handler();
     private ProgressBar progressBar;
 
+    /**
+     * Initialized the variables and calls observeTournament to fill the spinner
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +60,9 @@ public class MainActivity extends ActionBarActivity {
         observeTournament();
     }
 
+    /**
+     * Fills the spinner with tournaments from the database
+     */
     public void fillSpinner() {
         System.out.println("PRINTING STUFF");
         int count = 0;
@@ -85,10 +93,16 @@ public class MainActivity extends ActionBarActivity {
         //tournament.pushData("https://scoresubmission.firebaseio.com/");
     }
 
+    /**
+     * Gets the list of tournaments from the database
+     */
     public void observeTournament() {
         Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/Tournaments");
         Query queryRef = ref.orderByKey();
 
+        /**
+         * Listens for added children in the database
+         */
         queryRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -117,22 +131,18 @@ public class MainActivity extends ActionBarActivity {
                 // Call the method to populate the spinner
                 fillSpinner();
             }
-
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
             }
-
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
 
             }
-
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
             }
-
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
