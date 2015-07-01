@@ -34,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
 
     private Firebase myFirebaseRef;          // For connecting to Firebase
     private List<Tournament> available;      // The list of tournaments to populate the spinner
-    //Tournament tournament;                   // The active tournament
+    Tournament activeTournament;             // The active tournament
     Spinner spinner;                         // Our spinner containing the tournaments
     private static Context context; ///// NOTE: there was a firebase context?
     private Handler handler = new Handler();
@@ -51,9 +51,10 @@ public class MainActivity extends ActionBarActivity {
         // Configure our Firebase reference
         Firebase.setAndroidContext(this);
         myFirebaseRef = new Firebase("https://popping-torch-5466.firebaseio.com/");
+
         setContentView(R.layout.activity_main);
         MainActivity.context = MainActivity.this.getApplicationContext();
-
+        available = new ArrayList<>();
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         // Get the data from Firebase
@@ -64,33 +65,30 @@ public class MainActivity extends ActionBarActivity {
      * Fills the spinner with tournaments from the database
      */
     public void fillSpinner() {
-        System.out.println("PRINTING STUFF");
+        List<String> stringList = new ArrayList<>();
+
+        // Go through all of the tournaments in available
         int count = 0;
-
-        List<String> sList = new ArrayList<>();
-
-        // Go through all of the
         for (Tournament t : available) {
-            System.out.println("IN AVAILABLE count == " + count + " : "  + t.toString());
-            sList.add(t.toString());
+            stringList.add(t.display());
             count++;
         }
+        final int countFinal = count;
 
+        // Use the array adapter to change the contents of the spinner
         spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sList); // test will be "available" list
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, stringList);
         spinner.setAdapter(adapter);
 
-        Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                // put code here to change the GUI
-                progressBar.setProgress(100); // How will we set this?
+                for (int i = 0; i < countFinal; i++) {
+                    progressBar.setProgress(i * 10);
+                }
+                progressBar.setProgress(0);
             }
         });
-
-        //Tournament tournament = new Tournament("June 5th, 2015", "Chico", "password");
-        //tournament.pushData("https://scoresubmission.firebaseio.com/");
     }
 
     /**
@@ -116,14 +114,8 @@ public class MainActivity extends ActionBarActivity {
 
                 // Create the tournament and add it to the list
                 Tournament t = new Tournament(id, date, location, password);
-                System.out.println("The TOURNAMENT: " + t.display());
                 //MainActivity.this.available.add(t);
                 available.add(t);
-
-                // Just testing...
-                for (Tournament test : available) {
-                    System.out.println("Here is what's in the list: " + test.display());
-                }
 
                 // Clear the map between reads
                 newPost.clear();
@@ -164,8 +156,6 @@ public class MainActivity extends ActionBarActivity {
 
         String spinValue = spinner.getSelectedItem().toString();
         intent.putExtra("Spinner", spinValue);
-        //tournament = "Tahoe";
-        //intent.putExtra("TournamentName", tournament);
         startActivity(intent);
     }
 
@@ -188,8 +178,6 @@ public class MainActivity extends ActionBarActivity {
 
         String spinValue = spinner.getSelectedItem().toString();
         intent.putExtra("Spinner", spinValue);
-        //tournament = "Tahoe";
-        //intent.putExtra("TournamentName", tournament);
         startActivity(intent);
     }
 
