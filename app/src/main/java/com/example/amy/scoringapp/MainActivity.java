@@ -51,10 +51,10 @@ public class MainActivity extends ActionBarActivity {
         // Configure our Firebase reference
         Firebase.setAndroidContext(this);
         myFirebaseRef = new Firebase("https://popping-torch-5466.firebaseio.com/");
+
         setContentView(R.layout.activity_main);
         MainActivity.context = MainActivity.this.getApplicationContext();
         available = new ArrayList<>();
-
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         // Get the data from Firebase
@@ -77,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
 
         // Use the array adapter to change the contents of the spinner
         spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, stringList); // test will be "available" list
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, stringList);
         spinner.setAdapter(adapter);
 
         handler.post(new Runnable() {
@@ -178,8 +178,6 @@ public class MainActivity extends ActionBarActivity {
 
         String spinValue = spinner.getSelectedItem().toString();
         intent.putExtra("Spinner", spinValue);
-        //tournament = "Tahoe";
-        //intent.putExtra("TournamentName", tournament);
         startActivity(intent);
     }
 
