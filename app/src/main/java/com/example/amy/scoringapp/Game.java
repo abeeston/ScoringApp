@@ -10,12 +10,14 @@ import java.util.Map;
  * Contains a single game
  */
 public class Game implements DatabaseObserver{
-    private String courtNum;
-    private String location;
-    protected Time time;
-    private String tournamentID;
-    private String gameID;
-    private ArrayList<Team> teams;
+    private String tournamentID;   // The tournament id for grouping
+    private String courtNum;       // Game court number
+    private String location;       // Game location
+    protected Time time;           // Time of the game (entered from the user)
+                                   // A Timestamp?
+    private String gameID; ///// TODO: Have a second constructor that doesn't need an ID
+    private Team team1;            // The first team
+    private Team team2;            // The second team
 
     /**
      * Default constructor; sets all parameters to court 100 at 12:00 PM
@@ -24,11 +26,14 @@ public class Game implements DatabaseObserver{
         this.courtNum = "00";
         this.time.setHour("00");
         this.time.setMin("00");
-        this.teams = null;
         this.gameID = null;
         this.tournamentID = null;
         this.location = null;
     }
+
+//    public Game() {
+//
+//    }
 
     /** Get court number */
     public String getCourtNum() {
@@ -63,9 +68,10 @@ public class Game implements DatabaseObserver{
         //change values in Firebase to current values in this class
         url.child("Games/" + tournamentID + "/" + gameID + "/court").setValue(courtNum);
         url.child("Games/" + tournamentID + "/" + gameID + "/location").setValue(location);
-        url.child("Games/" + tournamentID + "/" + gameID + "/team1").setValue(teams.get(0).getName());
-        url.child("Games/" + tournamentID + "/" + gameID + "/team2").setValue(teams.get(1).getName());
-        url.child("Games/" + tournamentID + "/" + gameID + "/score").setValue(teams.get(0).getScore() + "-" + teams.get(1).getScore());
+        url.child("Games/" + tournamentID + "/" + gameID + "/team1").setValue(team1.getName());
+        url.child("Games/" + tournamentID + "/" + gameID + "/team2").setValue(team2.getName());
+        url.child("Games/" + tournamentID + "/" + gameID + "/score").setValue(team1.getScore() + "-" + team1.getScore());
+        url.child("Games/" + tournamentID + "/" + gameID + "/score").setValue(team2.getScore() + "-" + team2.getScore());
         url.child("Games/" + tournamentID + "/" + gameID + "/time").setValue(time.MilitaryTime());
 
     }
@@ -83,12 +89,13 @@ public class Game implements DatabaseObserver{
         Map<String, String> post = new HashMap<>();
         post.put("court",courtNum);
         post.put("location", location);
-        post.put("team1", teams.get(0).getName());
-        post.put("team2", teams.get(1).getName());
-        post.put("score", (teams.get(0).getScore() + "-" + teams.get(1).getScore()));
+        post.put("team1", team1.getName());
+        post.put("team2", team2.getName());
+        post.put("score", (team1.getScore() + "-" + team1.getScore()));
+        post.put("score", (team2.getScore() + "-" + team2.getScore()));
         post.put("time", time.MilitaryTime());
 
-                //sets Firebase to match map
+        //sets Firebase to match map
         newPostRef.setValue(post);
 
         //set this ID to Firebase ID

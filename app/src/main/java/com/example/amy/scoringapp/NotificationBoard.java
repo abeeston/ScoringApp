@@ -1,14 +1,37 @@
 package com.example.amy.scoringapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class NotificationBoard extends ActionBarActivity {
+
+    private Context context;         // The context is used for the listview
+    private List<Game> games;        // The list of games to be gained from the database
+    private ProgressBar progressBar; // The progress bar to be updated
+    private Handler handler;         // For updating the progress bar
+    private ListView listView;       // The list view to be updated and displayed to
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +45,99 @@ public class NotificationBoard extends ActionBarActivity {
 
         TextView t = (TextView) findViewById(R.id.textView17);
         t.setText(spinValue);
+
+        context = NotificationBoard.this.getApplicationContext();
+        games = new ArrayList<Game>();
+        progressBar = (ProgressBar) findViewById(R.id.progressBar2);
+        handler = new Handler();
+
+        observeGames();
+    }
+
+    public void fillList() {
+        List<String> stringList = new ArrayList<>();
+
+        // Go through all of the tournaments in available
+        int count = 0;
+        for (Game g : games) {
+            stringList.add(g.display());
+            count++;
+        }
+        final int countFinal = count;
+
+        // Use the array adapter to change the contents of the spinner
+        listView = (ListView) findViewById(R.id.listView);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, stringList);
+        listView.setAdapter(adapter);
+
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < countFinal; i++) {
+                    progressBar.setProgress(i * 10);
+                }
+                progressBar.setProgress(0);
+            }
+        });
+
+    }
+
+    /**
+     * Gets the list of tournaments from the database
+     */
+    public void observeGames() {
+        Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/Games");
+        Query queryRef = ref.orderByKey();
+
+        /**
+         * Listens for added children in the database
+         */
+        queryRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                // Read the data into a map
+
+                // TODO: This it the part that needs worked over. How do we get only the data that belongs to the tournament id?
+                Map<String, Object> newPost = (HashMap<String, Object>) dataSnapshot.getValue();
+
+                String id = dataSnapshot.getKey();
+                String court = (String) newPost.get("court");
+                String location = (String) newPost.get("location");
+                String password = (String) newPost.get("score");
+
+                // Create the tournament and add it to the list
+                Game g = new Game ();
+                //Tournament t = new Tournament(id, date, location, password);
+                //MainActivity.this.available.add(t);
+                games.add(g);
+
+                // Clear the map between reads
+                newPost.clear();
+
+                // Call the method to populate the spinner
+                fillList();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
     }
 
     @Override

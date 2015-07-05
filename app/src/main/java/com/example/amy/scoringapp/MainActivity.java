@@ -2,10 +2,9 @@ package com.example.amy.scoringapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,9 +18,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,11 +31,11 @@ public class MainActivity extends ActionBarActivity {
 
     private Firebase myFirebaseRef;          // For connecting to Firebase
     private List<Tournament> available;      // The list of tournaments to populate the spinner
-    Tournament activeTournament;             // The active tournament
-    Spinner spinner;                         // Our spinner containing the tournaments
-    private static Context context; ///// NOTE: there was a firebase context?
-    private Handler handler = new Handler();
-    private ProgressBar progressBar;
+    private Tournament activeTournament;     // The active tournament
+    private Spinner spinner;                 // Our spinner containing the tournaments
+    private static Context context;          // The context of our app
+    private Handler handler;                 // For multithreading with the progress bar
+    private ProgressBar progressBar;         // Load progress
 
     /**
      * Initialized the variables and calls observeTournament to fill the spinner
@@ -56,6 +53,7 @@ public class MainActivity extends ActionBarActivity {
         MainActivity.context = MainActivity.this.getApplicationContext();
         available = new ArrayList<>();
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        handler = new Handler();
 
         // Get the data from Firebase
         observeTournament();
@@ -125,7 +123,7 @@ public class MainActivity extends ActionBarActivity {
             }
 
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
             }
 
