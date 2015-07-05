@@ -24,7 +24,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * This class encapsulates the functions related to loading the games associated with a given
+ * tournament and displaying them in a list view.
+ */
 public class NotificationBoard extends ActionBarActivity {
 
     private Context context;         // The context is used for the listview
@@ -33,6 +36,10 @@ public class NotificationBoard extends ActionBarActivity {
     private Handler handler;         // For updating the progress bar
     private ListView listView;       // The list view to be updated and displayed to
 
+    /**
+     * Gets the selected tournament from the previous page and initializes variables
+     * @param savedInstanceState The saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +47,10 @@ public class NotificationBoard extends ActionBarActivity {
 
         Intent intent = getIntent();
 
-        //String tournament = intent.getStringExtra("TournamentName");
-        String spinValue = intent.getStringExtra("Spinner");
+        //String spinValue = intent.getStringExtra("Spinner");
 
-        TextView t = (TextView) findViewById(R.id.textView17);
-        t.setText(spinValue);
+        //TextView t = (TextView) findViewById(R.id.textView17);
+        //t.setText(spinValue);
 
         context = NotificationBoard.this.getApplicationContext();
         games = new ArrayList<Game>();
@@ -54,6 +60,9 @@ public class NotificationBoard extends ActionBarActivity {
         observeGames();
     }
 
+    /**
+     * Fills the listview with the data received from the database
+     */
     public void fillList() {
         List<String> stringList = new ArrayList<>();
 
@@ -83,7 +92,7 @@ public class NotificationBoard extends ActionBarActivity {
     }
 
     /**
-     * Gets the list of tournaments from the database
+     * Gets the list of games from the database
      */
     public void observeGames() {
         Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/Games");
@@ -103,19 +112,27 @@ public class NotificationBoard extends ActionBarActivity {
                 String id = dataSnapshot.getKey();
                 String court = (String) newPost.get("court");
                 String location = (String) newPost.get("location");
-                String password = (String) newPost.get("score");
+                String team1name = (String) newPost.get("team1");
+                String team1score = (String) newPost.get("team1score");
+
+                System.out.println("--------------------------PRINTING--------------------------------");
+                System.out.println(id);
+                System.out.println(court);
+                System.out.println(location);
+                System.out.println(team1name);
+                System.out.println(team1score);
 
                 // Create the tournament and add it to the list
-                Game g = new Game ();
+                //Game g = new Game ();
                 //Tournament t = new Tournament(id, date, location, password);
                 //MainActivity.this.available.add(t);
-                games.add(g);
+                //games.add(g);
 
                 // Clear the map between reads
                 newPost.clear();
 
                 // Call the method to populate the spinner
-                fillList();
+                //fillList();
             }
 
             @Override
