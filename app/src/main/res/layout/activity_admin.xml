@@ -30,10 +30,12 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText8"
+        android:id="@+id/Tournament"
         android:layout_below="@+id/textView12"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/TournDate"
+        android:layout_alignEnd="@+id/TournDate" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,7 +43,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Date"
         android:id="@+id/textView13"
-        android:layout_below="@+id/editText8"
+        android:layout_below="@+id/Tournament"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -50,7 +52,7 @@
         android:layout_height="wrap_content"
         android:inputType="date"
         android:ems="10"
-        android:id="@+id/editText9"
+        android:id="@+id/TournDate"
         android:layout_below="@+id/textView13"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -61,25 +63,27 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Event Password"
         android:id="@+id/textView14"
-        android:layout_below="@+id/editText9"
+        android:layout_below="@+id/TournDate"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText10"
+        android:id="@+id/TournPassword"
         android:layout_below="@+id/textView14"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/TournDate"
+        android:layout_alignEnd="@+id/TournDate" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create"
-        android:id="@+id/button5"
-        android:layout_below="@+id/editText10"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="49dp" />
+        android:id="@+id/CreateTournament"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/TournPassword"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

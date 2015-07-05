@@ -36,6 +36,7 @@ public class MainActivity extends ActionBarActivity {
     private static Context context;          // The context of our app
     private Handler handler;                 // For multithreading with the progress bar
     private ProgressBar progressBar;         // Load progress
+    private static boolean isLoading;
 
     /**
      * Initialized the variables and calls observeTournament to fill the spinner
