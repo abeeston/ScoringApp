@@ -67,7 +67,7 @@ public class EnterScore extends ActionBarActivity {
         String hour = spinnerHour.getSelectedItem().toString();
         String min = spinnerMin.getSelectedItem().toString();
         String AMPM = spinnerAMPM.getSelectedItem().toString();
-        //location = findViewById(R.id.editTextLocation).toString();
+        location = findViewById(R.id.GameLocation).toString();
         // TODO: Finish these
         /*courtNum;
         team1name;

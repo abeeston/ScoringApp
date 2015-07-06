@@ -11,16 +11,17 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinnerMinute"
         android:layout_below="@+id/textView3"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_toStartOf="@+id/SubmitGame"
+        android:layout_toLeftOf="@+id/SubmitGame" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinnerHour"
         android:layout_alignTop="@+id/spinnerMinute"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2" />
+        android:layout_toRightOf="@+id/spinnerMinute"
+        android:layout_alignRight="@+id/GameLocation"
+        android:layout_alignEnd="@+id/GameLocation" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -177,5 +178,13 @@
         android:id="@+id/SubmitGame"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerAMPM"
+        android:layout_below="@+id/textView3"
+        android:layout_toRightOf="@+id/spinnerHour"
+        android:layout_toEndOf="@+id/spinnerHour" />
 
 </RelativeLayout>
