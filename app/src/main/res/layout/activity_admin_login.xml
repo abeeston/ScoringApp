@@ -30,16 +30,19 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText11"
+        android:id="@+id/AdminUsername"
         android:layout_below="@+id/textView15"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/AdminPassword"
+        android:layout_alignEnd="@+id/AdminPassword"
+        android:layout_alignLeft="@+id/AdminPassword"
+        android:layout_alignStart="@+id/AdminPassword" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText12"
+        android:id="@+id/AdminPassword"
         android:layout_below="@+id/textView16"
         android:layout_centerHorizontal="true" />
 
@@ -47,9 +50,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Log in"
-        android:id="@+id/button6"
+        android:id="@+id/Login"
         android:onClick="onClickAdminLogin"
-        android:layout_below="@+id/editText12"
+        android:layout_below="@+id/AdminPassword"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

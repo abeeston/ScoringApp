@@ -19,16 +19,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinnerHour"
         android:layout_alignTop="@+id/spinnerMinute"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextLocation"
+        android:id="@+id/GameLocation"
         android:layout_below="@+id/textView4"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/SubmitGame"
+        android:layout_alignEnd="@+id/SubmitGame" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,17 +69,19 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Court Number"
         android:id="@+id/textView5"
-        android:layout_below="@+id/editTextLocation"
+        android:layout_below="@+id/GameLocation"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextCourtNum"
+        android:id="@+id/CourtNumber"
         android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/GameLocation"
+        android:layout_alignEnd="@+id/GameLocation" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -85,7 +89,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Team 1 Name"
         android:id="@+id/textView6"
-        android:layout_below="@+id/editTextCourtNum"
+        android:layout_below="@+id/CourtNumber"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -107,8 +111,8 @@
         android:text="Score"
         android:id="@+id/textView8"
         android:layout_above="@+id/textView7"
-        android:layout_alignRight="@+id/spinnerHour"
-        android:layout_alignEnd="@+id/spinnerHour" />
+        android:layout_alignLeft="@+id/textView9"
+        android:layout_alignStart="@+id/textView9" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -116,57 +120,62 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Score"
         android:id="@+id/textView9"
-        android:layout_alignBottom="@+id/textView7"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/ScoreTeam2"
+        android:layout_alignLeft="@+id/ScoreTeam2"
+        android:layout_alignStart="@+id/ScoreTeam2" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText3"
+        android:id="@+id/Team1Name"
         android:layout_below="@+id/textView6"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/CourtNumber"
+        android:layout_alignEnd="@+id/CourtNumber"
+        android:inputType="text" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText4"
+        android:id="@+id/Team2Name"
         android:layout_below="@+id/textView7"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/Team1Name"
+        android:layout_alignEnd="@+id/Team1Name"
+        android:inputType="text" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText5"
+        android:id="@+id/ScoreTeam1"
         android:layout_below="@+id/textView8"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignLeft="@+id/textView8"
+        android:layout_alignStart="@+id/textView8"
+        android:layout_toStartOf="@+id/ScoreTeam2"
+        android:layout_alignRight="@+id/ScoreTeam2"
+        android:layout_alignEnd="@+id/ScoreTeam2"
+        android:inputType="number" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText6"
-        android:layout_below="@+id/textView9"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:id="@+id/ScoreTeam2"
+        android:layout_alignTop="@+id/Team2Name"
+        android:layout_toRightOf="@+id/SubmitGame"
+        android:layout_marginLeft="41dp"
+        android:layout_marginStart="41dp"
+        android:layout_alignRight="@+id/spinnerHour"
+        android:layout_alignEnd="@+id/spinnerHour"
+        android:inputType="number" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:id="@+id/button4"
+        android:id="@+id/SubmitGame"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onClickSubmit"/>
-
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinnerAMPM"
-        android:layout_alignTop="@+id/spinnerMinute"
-        android:layout_toRightOf="@+id/button4"
-        android:layout_toEndOf="@+id/button4" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
