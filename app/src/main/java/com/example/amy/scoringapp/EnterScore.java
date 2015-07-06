@@ -15,6 +15,7 @@ import android.widget.Spinner;
  */
 public class EnterScore extends ActionBarActivity {
     private String tournID;       // The id of the tournament selected on the main screen
+    private String time;
     private Spinner spinnerHour;  // Hour spinner
     private Spinner spinnerMin;   // Minute spinner
     private Spinner spinnerAMPM;  // AM/PM spinner
@@ -64,16 +65,20 @@ public class EnterScore extends ActionBarActivity {
      * @param v The View
      */
     public void onClickSubmit(View v) {
+        // Get the values of the form
         String hour = spinnerHour.getSelectedItem().toString();
         String min = spinnerMin.getSelectedItem().toString();
         String AMPM = spinnerAMPM.getSelectedItem().toString();
+        time = hour + ":" + min + " " + AMPM;
+
         location = findViewById(R.id.GameLocation).toString();
-        // TODO: Finish these
-        /*courtNum;
-        team1name;
-        team1score;
-        team2name;
-        team2score;*/
+        courtNum = findViewById(R.id.CourtNumber).toString();
+        team1name = findViewById(R.id.Team1Name).toString();
+        team1score = findViewById(R.id.ScoreTeam1).toString();
+        team2name = findViewById(R.id.Team2Name).toString();
+        team2score = findViewById(R.id.ScoreTeam2).toString();
+
+
     }
 
     @Override

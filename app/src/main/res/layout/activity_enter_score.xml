@@ -155,9 +155,9 @@
         android:layout_alignLeft="@+id/textView8"
         android:layout_alignStart="@+id/textView8"
         android:layout_toStartOf="@+id/ScoreTeam2"
-        android:layout_alignRight="@+id/ScoreTeam2"
-        android:layout_alignEnd="@+id/ScoreTeam2"
-        android:inputType="number" />
+        android:inputType="number"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -167,9 +167,9 @@
         android:layout_toRightOf="@+id/SubmitGame"
         android:layout_marginLeft="41dp"
         android:layout_marginStart="41dp"
-        android:layout_alignRight="@+id/spinnerHour"
-        android:layout_alignEnd="@+id/spinnerHour"
-        android:inputType="number" />
+        android:inputType="number"
+        android:layout_alignRight="@+id/spinnerAMPM"
+        android:layout_alignEnd="@+id/spinnerAMPM" />
 
     <Button
         android:layout_width="wrap_content"
@@ -184,7 +184,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinnerAMPM"
         android:layout_below="@+id/textView3"
-        android:layout_toRightOf="@+id/spinnerHour"
-        android:layout_toEndOf="@+id/spinnerHour" />
+        android:layout_toEndOf="@+id/spinnerMinute"
+        android:layout_toRightOf="@+id/spinnerMinute" />
 
 </RelativeLayout>
