@@ -25,7 +25,6 @@ public class Game implements DatabaseObserver{
         this.courtNum = "00";
         this.time.setHour("00");
         this.time.setMin("00");
-
         this.gameID = null;
         this.tournamentID = null;
         this.location = null;
@@ -71,7 +70,7 @@ public class Game implements DatabaseObserver{
         url.child("Games/" + tournamentID + "/" + gameID + "/team1").setValue(team1.getName());
         url.child("Games/" + tournamentID + "/" + gameID + "/team2").setValue(team2.getName());
         url.child("Games/" + tournamentID + "/" + gameID + "/score").setValue(team1.getScore() + "-" + team1.getScore());
-        url.child("Games/" + tournamentID + "/" + gameID + "/score").setValue(team2.getScore() + "-" + team2.getScore());
+        //url.child("Games/" + tournamentID + "/" + gameID + "/score").setValue(team2.getScore() + "-" + team2.getScore());
         url.child("Games/" + tournamentID + "/" + gameID + "/time").setValue(time.MilitaryTime());
 
     }
