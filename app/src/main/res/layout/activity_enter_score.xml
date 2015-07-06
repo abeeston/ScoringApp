@@ -9,7 +9,7 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinnerMinute"
+        android:id="@+id/spinnerHour"
         android:layout_below="@+id/textView3"
         android:layout_toStartOf="@+id/SubmitGame"
         android:layout_toLeftOf="@+id/SubmitGame" />
@@ -17,9 +17,9 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinnerHour"
-        android:layout_alignTop="@+id/spinnerMinute"
-        android:layout_toRightOf="@+id/spinnerMinute"
+        android:id="@+id/spinnerMinute"
+        android:layout_alignTop="@+id/spinnerHour"
+        android:layout_toRightOf="@+id/spinnerHour"
         android:layout_alignRight="@+id/GameLocation"
         android:layout_alignEnd="@+id/GameLocation" />
 
