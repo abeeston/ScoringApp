@@ -2,7 +2,6 @@ package com.example.amy.scoringapp;
 
 import com.firebase.client.Firebase;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +25,7 @@ public class Game implements DatabaseObserver{
         this.courtNum = "00";
         this.time.setHour("00");
         this.time.setMin("00");
+
         this.gameID = null;
         this.tournamentID = null;
         this.location = null;

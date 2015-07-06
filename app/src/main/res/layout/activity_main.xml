@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="     Submit a Score    "
-        android:id="@+id/SubmitScore"
+        android:id="@+id/button"
         android:onClick="onClickSubmitScore"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
@@ -29,11 +29,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Notification Board"
-        android:id="@+id/NotificationBoard"
-        android:layout_below="@+id/SubmitScore"
+        android:id="@+id/button2"
+        android:layout_below="@+id/button"
         android:onClick="onClickNotificationBoard"
-        android:layout_alignRight="@+id/SubmitScore"
-        android:layout_alignEnd="@+id/SubmitScore"
+        android:layout_alignRight="@+id/button"
+        android:layout_alignEnd="@+id/button"
         android:layout_marginTop="39dp" />
 
     <TextView
@@ -59,11 +59,5 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:layout_below="@+id/button3"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

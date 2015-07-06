@@ -29,14 +29,13 @@ import java.util.Map;
  */
 public class MainActivity extends ActionBarActivity {
 
-    private Firebase myFirebaseRef;          // For connecting to Firebase
     private List<Tournament> available;      // The list of tournaments to populate the spinner
     private Tournament activeTournament;     // The active tournament
     private Spinner spinner;                 // Our spinner containing the tournaments
     private static Context context;          // The context of our app
     private Handler handler;                 // For multithreading with the progress bar
-    private ProgressBar progressBar;         // Load progress
-    private static boolean isLoading = true;
+    //private ProgressBar progressBar;         // Load progress
+
     /**
      * Initialized the variables and calls observeTournament to fill the spinner
      * @param savedInstanceState The saved instance state for loading
@@ -47,12 +46,11 @@ public class MainActivity extends ActionBarActivity {
 
         // Configure our Firebase reference
         Firebase.setAndroidContext(this);
-        myFirebaseRef = new Firebase("https://popping-torch-5466.firebaseio.com/");
 
         setContentView(R.layout.activity_main);
         MainActivity.context = MainActivity.this.getApplicationContext();
         available = new ArrayList<>();
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        //progressBar = (ProgressBar) findViewById(R.id.progressBar);
         handler = new Handler();
 
         // Get the data from Firebase
@@ -81,10 +79,9 @@ public class MainActivity extends ActionBarActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < countFinal; i++) {
-                    progressBar.setProgress(i * 10);
-                }
-                progressBar.setProgress(0);
+                //for (int i = 0; i < countFinal; i++) {
+                //progressBar.setProgress(100);
+                //progressBar.setProgress(0);
             }
         });
     }
@@ -152,8 +149,12 @@ public class MainActivity extends ActionBarActivity {
         // Create an intent to put the tournament in and send it to the ScoreSubmit class and activity
         Intent intent = new Intent(this, TournamentPassword.class);
 
-        String spinValue = spinner.getSelectedItem().toString();
-        intent.putExtra("Spinner", spinValue);
+        // Get the selected item and send the tournament's id for updating the game
+        int position = spinner.getSelectedItemPosition();
+        String id = available.get(position).getID();
+        intent.putExtra("TournamentID", id);
+
+        // Start
         startActivity(intent);
     }
 
@@ -174,8 +175,16 @@ public class MainActivity extends ActionBarActivity {
     public void onClickNotificationBoard(View view) {
         Intent intent = new Intent(this, NotificationBoard.class);
 
+        // Send what's in the spinner in case we want to display it //////////////NOTE: Not completely necessary but we might use it
         String spinValue = spinner.getSelectedItem().toString();
         intent.putExtra("Spinner", spinValue);
+
+        // Get the selected item and send the tournament's id for updating the game
+        int position = spinner.getSelectedItemPosition();
+        String id = available.get(position).getID();
+        intent.putExtra("TournamentID", id);
+
+        // Start
         startActivity(intent);
     }
 
