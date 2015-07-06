@@ -1,7 +1,7 @@
 package com.example.amy.scoringapp;
 
 /**
- * Created by Amy on 6/10/2015.
+ * Contains the time of a game
  */
 public class Time {
 
@@ -14,7 +14,7 @@ public class Time {
     }
 
     Time(String hour, String min, String amPm) {
-        if(amPm == "pm") {
+        if(amPm.equals("PM")) {
             this.hour = Integer.toString(Integer.parseInt(hour) + 12);
         }
         else {
@@ -29,6 +29,7 @@ public class Time {
     void setHour(String hour) { this.hour = hour; }
     void setMin(String min) { this.min = min; }
 
+    // TODO: Needs to use .equals()
     boolean compare(Time time2) {
 
         return this.hour == time2.hour && this.min == time2.min;
@@ -36,10 +37,10 @@ public class Time {
 
     public String StandardTime() {
         if((Integer.parseInt(hour)) > 12) {
-            return (Integer.toString(Integer.parseInt(hour) - 12)) + ":" + min + " pm";
+            return (Integer.toString(Integer.parseInt(hour) - 12)) + ":" + min + " PM";
         }
 
-        return hour + ":" + min + " am";
+        return hour + ":" + min + " AM";
     }
 
     public String MilitaryTime() {

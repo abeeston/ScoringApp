@@ -19,13 +19,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinnerHour"
         android:layout_alignTop="@+id/spinnerMinute"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/editTextLocation"
         android:layout_below="@+id/textView4"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -67,14 +67,14 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Court Number"
         android:id="@+id/textView5"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/editTextLocation"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText2"
+        android:id="@+id/editTextCourtNum"
         android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -85,7 +85,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Team 1 Name"
         android:id="@+id/textView6"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/editTextCourtNum"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -158,6 +158,15 @@
         android:text="Submit"
         android:id="@+id/button4"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickSubmit"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerAMPM"
+        android:layout_alignTop="@+id/spinnerMinute"
+        android:layout_toRightOf="@+id/button4"
+        android:layout_toEndOf="@+id/button4" />
 
 </RelativeLayout>
