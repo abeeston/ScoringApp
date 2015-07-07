@@ -1,8 +1,8 @@
 package com.example.amy.scoringapp;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +18,11 @@ public class AdminLogin extends ActionBarActivity {
         setContentView(R.layout.activity_admin_login);
     }
 
+    /**
+     * Creates the options menu
+     * @param menu The menu
+     * @return Boolean
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -25,6 +30,11 @@ public class AdminLogin extends ActionBarActivity {
         return true;
     }
 
+    /**
+     * Returns the item selected
+     * @param item The item
+     * @return Boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -42,7 +52,7 @@ public class AdminLogin extends ActionBarActivity {
 
     /**
      * Goes into the next screen and passes the information to it.
-     * @param view
+     * @param view The view
      */
     public void onClickAdminLogin(View view) {
         Intent intent = new Intent(this, AdminActivity.class);

@@ -2,16 +2,14 @@ package com.example.amy.scoringapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -157,6 +155,11 @@ public class NotificationBoard extends ActionBarActivity {
         });
     }
 
+    /**
+     * Creates the options menu
+     * @param menu The menu
+     * @return Boolean
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -164,6 +167,11 @@ public class NotificationBoard extends ActionBarActivity {
         return true;
     }
 
+    /**
+     * Returns the item selected
+     * @param item The item
+     * @return Boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

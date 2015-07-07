@@ -93,6 +93,11 @@ public class EnterScore extends ActionBarActivity {
         game.pushData(ref);
     }
 
+    /**
+     * Creates the options menu
+     * @param menu The menu
+     * @return Boolean
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -100,6 +105,11 @@ public class EnterScore extends ActionBarActivity {
         return true;
     }
 
+    /**
+     * Returns the item selected
+     * @param item The item
+     * @return Boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

@@ -30,6 +30,7 @@ public class Team {
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
+    /** Setters */
     public String getScore() { return score; }
     public void setScore(String score) { this.score = score; }
 

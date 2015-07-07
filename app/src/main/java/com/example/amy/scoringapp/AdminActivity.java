@@ -1,7 +1,7 @@
 package com.example.amy.scoringapp;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,9 +20,10 @@ import java.util.Map;
 public class AdminActivity extends ActionBarActivity {
 
     private EditText tournName, tournDate, tournPassword;
+
     /**
-     *
-     * @param savedInstanceState
+     * Loads the necessary items
+     * @param savedInstanceState The saved instance state
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,11 @@ public class AdminActivity extends ActionBarActivity {
         setContentView(R.layout.activity_admin);
     }
 
+    /**
+     * Creates the options menu
+     * @param menu The menu
+     * @return Boolean
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -38,9 +44,9 @@ public class AdminActivity extends ActionBarActivity {
     }
 
     /**
-     *  Bar item clicks are handled here
-     * @param item
-     * @return
+     * Returns the item selected
+     * @param item The item selected
+     * @return Boolean
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -60,7 +66,7 @@ public class AdminActivity extends ActionBarActivity {
     /**
      * When this button is clicked, we will push the tournament information onto the
      * database.
-     * @param view
+     * @param view The view
      */
     public void onClickAdminActivity(View view){
 

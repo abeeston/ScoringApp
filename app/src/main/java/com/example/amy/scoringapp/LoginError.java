@@ -1,7 +1,7 @@
 package com.example.amy.scoringapp;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -10,6 +10,10 @@ import android.view.MenuItem;
  */
 public class LoginError extends ActionBarActivity {
 
+    /**
+     * Loads the screen
+     * @param savedInstanceState The saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,9 +21,9 @@ public class LoginError extends ActionBarActivity {
     }
 
     /**
-     * On create.  Default constructor right now.
-     * @param menu
-     * @return
+     * Creates the options menu
+     * @param menu The menu
+     * @return Boolean
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -29,9 +33,9 @@ public class LoginError extends ActionBarActivity {
     }
 
     /**
-     * Handle action bar item clicks.
-     * @param item
-     * @return
+     * Returns the item selected
+     * @param item The item
+     * @return Boolean
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
