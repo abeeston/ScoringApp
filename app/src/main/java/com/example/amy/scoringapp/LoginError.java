@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
+/**
+ * Login error.
+ */
 public class LoginError extends ActionBarActivity {
 
     @Override
@@ -14,6 +16,11 @@ public class LoginError extends ActionBarActivity {
         setContentView(R.layout.activity_login_error);
     }
 
+    /**
+     * On create.  Default constructor right now.
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -21,6 +28,11 @@ public class LoginError extends ActionBarActivity {
         return true;
     }
 
+    /**
+     * Handle action bar item clicks.
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

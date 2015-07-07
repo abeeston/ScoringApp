@@ -7,7 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-
+/**
+ *  Handles the admin login
+ */
 public class AdminLogin extends ActionBarActivity {
 
     @Override
@@ -38,6 +40,10 @@ public class AdminLogin extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Goes into the next screen and passes the information to it.
+     * @param view
+     */
     public void onClickAdminLogin(View view) {
         Intent intent = new Intent(this, AdminActivity.class);
         startActivity(intent);

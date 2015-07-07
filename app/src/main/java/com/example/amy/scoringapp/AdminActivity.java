@@ -37,6 +37,11 @@ public class AdminActivity extends ActionBarActivity {
         return true;
     }
 
+    /**
+     *  Bar item clicks are handled here
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -52,6 +57,11 @@ public class AdminActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * When this button is clicked, we will push the tournament information onto the
+     * database.
+     * @param view
+     */
     public void onClickAdminActivity(View view){
 
         tournName     = (EditText) findViewById(R.id.Tournament);

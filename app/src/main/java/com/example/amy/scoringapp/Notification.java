@@ -19,6 +19,10 @@ public class Notification implements DatabaseObserver{
     private String timeStamp;
     private Game content;
 
+    /**
+     * Pulls
+     * @param url
+     */
     @Override
     public void pullData(Firebase url) {
 

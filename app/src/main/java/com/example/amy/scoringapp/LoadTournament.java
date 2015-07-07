@@ -7,6 +7,7 @@ import com.firebase.client.ValueEventListener;
 
 /**
  * Created by Mark on 6/20/2015.
+ * Probably will be deleted, but I am not 100% sure yet.
  */
 public class LoadTournament {
     void onCreate(){
