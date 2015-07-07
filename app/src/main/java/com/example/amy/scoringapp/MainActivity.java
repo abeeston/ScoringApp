@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import com.firebase.client.ChildEventListener;
@@ -188,7 +187,11 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-
+    /**
+     * Creates the options menu
+     * @param menu The menu
+     * @return Boolean
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -196,6 +199,11 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
+    /**
+     * Returns the item selected
+     * @param item The item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
