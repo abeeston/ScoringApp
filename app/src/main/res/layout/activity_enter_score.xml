@@ -177,7 +177,8 @@
         android:text="Submit"
         android:id="@+id/SubmitGame"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickSubmit"/>
 
     <Spinner
         android:layout_width="wrap_content"
