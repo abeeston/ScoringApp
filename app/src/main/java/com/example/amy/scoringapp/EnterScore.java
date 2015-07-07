@@ -7,24 +7,28 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
+
+import com.firebase.client.Firebase;
 
 /**
  * Gets the values filled in by the user and calls the game class' method for submitted the created
  * Game class object automatically created
  */
 public class EnterScore extends ActionBarActivity {
+    private Firebase ref;
     private String tournID;       // The id of the tournament selected on the main screen
     private String time;
     private Spinner spinnerHour;  // Hour spinner
     private Spinner spinnerMin;   // Minute spinner
     private Spinner spinnerAMPM;  // AM/PM spinner
-    private String location;
-    private String courtNum;
-    private String team1name;
-    private String team1score;
-    private String team2name;
-    private String team2score;
+    private EditText location;
+    private EditText courtNum;
+    private EditText team1name;
+    private EditText team1score;
+    private EditText team2name;
+    private EditText team2score;
 
     /**
      * Fills the spinners with the needed data
@@ -33,6 +37,8 @@ public class EnterScore extends ActionBarActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ref = new Firebase("https://scoresubmission.firebaseio.com/");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_score);
 
@@ -65,20 +71,26 @@ public class EnterScore extends ActionBarActivity {
      * @param v The View
      */
     public void onClickSubmit(View v) {
-        // Get the values of the form
+        // Get the time and format it
         String hour = spinnerHour.getSelectedItem().toString();
         String min = spinnerMin.getSelectedItem().toString();
         String AMPM = spinnerAMPM.getSelectedItem().toString();
         time = hour + ":" + min + " " + AMPM;
 
-        location = findViewById(R.id.GameLocation).toString();
-        courtNum = findViewById(R.id.CourtNumber).toString();
-        team1name = findViewById(R.id.Team1Name).toString();
-        team1score = findViewById(R.id.ScoreTeam1).toString();
-        team2name = findViewById(R.id.Team2Name).toString();
-        team2score = findViewById(R.id.ScoreTeam2).toString();
+        // Get the game data
+        location = (EditText) findViewById(R.id.GameLocation);
+        courtNum = (EditText) findViewById(R.id.CourtNumber);
+        team1name = (EditText) findViewById(R.id.Team1Name);
+        team1score = (EditText) findViewById(R.id.ScoreTeam1);
+        team2name = (EditText) findViewById(R.id.Team2Name);
+        team2score = (EditText) findViewById(R.id.ScoreTeam2);
 
+        Team team1 = new Team(team1name.getText().toString(), team1score.getText().toString());
+        Team team2 = new Team(team2name.getText().toString(), team2score.getText().toString());
 
+        // Push the data
+        Game game = new Game(tournID, courtNum.getText().toString(), location.getText().toString(), time, team1, team2);
+        game.pushData(ref);
     }
 
     @Override
