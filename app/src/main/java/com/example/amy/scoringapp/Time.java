@@ -8,11 +8,18 @@ public class Time {
     private String hour;
     private String min;
 
+    // Default Constructor
     Time() {
         hour = "00";
         min = "00";
     }
 
+    /**
+     * Non-default constructor
+     * @param hour String hour
+     * @param min String min
+     * @param amPm String AM or PM
+     */
     Time(String hour, String min, String amPm) {
         if(amPm.equals("PM")) {
             this.hour = Integer.toString(Integer.parseInt(hour) + 12);
@@ -23,9 +30,11 @@ public class Time {
         this.min = min;
     }
 
+    /** Getters */
     String getHour() { return hour; }
     String getMin() { return min; }
 
+    /** Setters*/
     void setHour(String hour) { this.hour = hour; }
     void setMin(String min) { this.min = min; }
 
