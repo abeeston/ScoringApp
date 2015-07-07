@@ -24,4 +24,8 @@ public class Team {
     public String getScore() { return score; }
     public void setScore(String score) { this.score = score; }
 
+    public String display() {
+        return name + " " + score;
+    }
+
 }

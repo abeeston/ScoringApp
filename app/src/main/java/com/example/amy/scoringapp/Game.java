@@ -50,10 +50,6 @@ public class Game implements DatabaseObserver{
         this.gameID = "";
     }
 
-    //    public Game() {
-//
-//    }
-
     /** Get court number */
     public String getCourtNum() {
         return courtNum;
@@ -62,20 +58,6 @@ public class Game implements DatabaseObserver{
     /** Set the court number */
     public void setCourtNum(String courtNum) {
         this.courtNum = courtNum;
-    }
-
-    /**Submit the score and date */
-     public void readSubmit() {
-
-    }
-
-    /**
-     * Pull the data from Firebase
-     * @param url Firebase URL
-     */
-    @Override
-    public void pullData(Firebase url) {
-
     }
 
     /**
@@ -123,11 +105,9 @@ public class Game implements DatabaseObserver{
 
     @Override
     public String display() {
-
-        return null;
-    }
-
-    public void sendNotificaion() {
-
+        if (courtNum == "1") {
+            return (time + " " + location + " " + "\n" + team1.display() + "  " + team2.display());
+        }
+        return (time + " " + location + " " + courtNum + "\n" + team1.display() + "  " + team2.display());
     }
 }

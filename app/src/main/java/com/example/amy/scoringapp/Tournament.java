@@ -70,17 +70,6 @@ public class Tournament implements DatabaseObserver {
     public void setGames(List<String> games) { this.games = games; }
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
-    
-    /**
-     * Update class with data from Firebase
-     * @param url url to the Firebase table
-     */
-    @Override
-    public void pullData(Firebase url) {
-        //we may or may not need this class
-        //I need to understand more how Marks
-        //load tournament class works.
-    }
 
     /**
      * update Firebase with data from class
@@ -125,7 +114,6 @@ public class Tournament implements DatabaseObserver {
      */
     @Override
     public String display() {
-        //return "Test!";
         return city + "   " + date;
     }
 

@@ -7,7 +7,6 @@ import com.firebase.client.Firebase;
  */
 public interface DatabaseObserver {
 
-    public void pullData(Firebase url);
     public void updateData(Firebase url);
     public void pushData(Firebase url);
     public String display();
