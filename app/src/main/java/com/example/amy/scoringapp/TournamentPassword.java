@@ -7,10 +7,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-
+/**
+ * Verifies the password for a given tournament
+ */
 public class TournamentPassword extends ActionBarActivity {
     private String tournID;
 
+    /**
+     * Gets the tournament id for verifying
+     * @param savedInstanceState The Saved Instance State
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +28,11 @@ public class TournamentPassword extends ActionBarActivity {
 
     }
 
+    /**
+     * Creates the options menu
+     * @param menu The menu
+     * @return Boolean
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -29,6 +40,11 @@ public class TournamentPassword extends ActionBarActivity {
         return true;
     }
 
+    /**
+     * Returns the item selected
+     * @param item The item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -44,7 +60,14 @@ public class TournamentPassword extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Verify the password and if it is valid start the next activity
+     * @param view The View
+     */
     public void onClickSubmitTournamentPassword(View view) {
+        // TODO: Verify the password
+
+
         // Create an intent to put the tournament in and send it to the ScoreSubmit class and activity
         Intent intent = new Intent(this, EnterScore.class);
         intent.putExtra("TournamentID", tournID);

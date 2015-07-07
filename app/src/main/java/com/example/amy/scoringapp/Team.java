@@ -1,23 +1,32 @@
 package com.example.amy.scoringapp;
 
 /**
- * Created by Amy on 6/10/2015.
+ * The name and score of a team
  */
 public class Team {
 
     private String name;
     private String score;
 
+    /**
+     * Default Constructor
+     */
     Team() {
         name = null;
         score = null;
     }
 
+    /**
+     * Non-Default Constructor
+     * @param name The name
+     * @param score The score
+     */
     Team(String name, String score) {
         this.name = name;
         this.score = score;
     }
 
+    /** Getters */
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
