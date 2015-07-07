@@ -5,6 +5,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.firebase.client.Firebase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *  Admin Activity controls things that only the admin can do.
@@ -12,6 +19,7 @@ import android.view.View;
  */
 public class AdminActivity extends ActionBarActivity {
 
+    private EditText tournName, tournDate, tournPassword;
     /**
      *
      * @param savedInstanceState
@@ -44,4 +52,23 @@ public class AdminActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void onClickAdminActivity(View view){
+
+        tournName     = (EditText) findViewById(R.id.Tournament);
+        tournDate     = (EditText) findViewById(R.id.TournDate);
+        tournPassword = (EditText) findViewById(R.id.TournPassword);
+
+        //creates reference to games in tournament
+        Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/Tournaments");
+
+        //create and push variables to hash map
+        Map<String, String> post = new HashMap<>();
+        post.put("date", tournDate.getText().toString());
+        post.put("location", tournName.getText().toString());
+        post.put("password", tournPassword.getText().toString());
+        ref.push().setValue(post);
+
+        Toast.makeText(getApplicationContext(), "Tournament saved successfully!",
+                Toast.LENGTH_LONG).show();
+    }
 }
