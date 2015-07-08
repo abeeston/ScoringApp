@@ -33,6 +33,7 @@ public class NotificationBoard extends ActionBarActivity {
     private ProgressBar progressBar; // The progress bar to be updated
     private Handler handler;         // For updating the progress bar
     private ListView listView;       // The list view to be updated and displayed to
+    private String tournID;
 
     /**
      * Gets the selected tournament from the previous page and initializes variables
@@ -44,7 +45,7 @@ public class NotificationBoard extends ActionBarActivity {
         setContentView(R.layout.activity_notification_board);
 
         Intent intent = getIntent();
-
+        tournID = intent.getStringExtra("TournamentID");
         //String spinValue = intent.getStringExtra("Spinner");
 
         //TextView t = (TextView) findViewById(R.id.textView17);
@@ -61,6 +62,7 @@ public class NotificationBoard extends ActionBarActivity {
     /**
      * Fills the listview with the data received from the database
      */
+
     public void fillList() {
         List<String> stringList = new ArrayList<>();
 
@@ -86,14 +88,14 @@ public class NotificationBoard extends ActionBarActivity {
                 progressBar.setProgress(0);
             }
         });
-
     }
+
 
     /**
      * Gets the list of games from the database
      */
     public void observeGames() {
-        Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/Games");
+        Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/Games/" + tournID);
         Query queryRef = ref.orderByKey();
 
         /**
@@ -109,16 +111,17 @@ public class NotificationBoard extends ActionBarActivity {
 
                 String id = dataSnapshot.getKey();
                 String court = (String) newPost.get("court");
-                String location = (String) newPost.get("location");
-                String team1name = (String) newPost.get("team1");
-                String team1score = (String) newPost.get("team1score");
+//                String location = (String) newPost.get("location");
+//                String team1name = (String) newPost.get("team1");
+//                String team1score = (String) newPost.get("team1score");
 
                 System.out.println("--------------------------PRINTING--------------------------------");
+                System.out.println(dataSnapshot.getValue());
                 System.out.println(id);
                 System.out.println(court);
-                System.out.println(location);
-                System.out.println(team1name);
-                System.out.println(team1score);
+//                System.out.println(location);
+//                System.out.println(team1name);
+//                System.out.println(team1score);
 
                 // Create the tournament and add it to the list
                 //Game g = new Game ();
@@ -170,7 +173,8 @@ public class NotificationBoard extends ActionBarActivity {
     /**
      * Returns the item selected
      * @param item The item
-     * @return Boolean
+     * @return Boolean+++++
+     *
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

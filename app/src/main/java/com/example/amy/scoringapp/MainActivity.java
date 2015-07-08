@@ -175,8 +175,8 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, NotificationBoard.class);
 
         // Send what's in the spinner in case we want to display it //////////////NOTE: Not completely necessary but we might use it
-        String spinValue = spinner.getSelectedItem().toString();
-        intent.putExtra("Spinner", spinValue);
+//        String spinValue = spinner.getSelectedItem().toString();
+//        intent.putExtra("Spinner", spinValue);
 
         // Get the selected item and send the tournament's id for updating the game
         int position = spinner.getSelectedItemPosition();
