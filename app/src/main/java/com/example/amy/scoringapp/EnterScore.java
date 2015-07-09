@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
@@ -91,6 +92,9 @@ public class EnterScore extends ActionBarActivity {
         // Push the data
         Game game = new Game(tournID, courtNum.getText().toString(), location.getText().toString(), time, team1, team2);
         game.pushData(ref);
+
+        Toast.makeText(getApplicationContext(), "The score has been submitted",
+                Toast.LENGTH_LONG).show();
     }
 
     /**
