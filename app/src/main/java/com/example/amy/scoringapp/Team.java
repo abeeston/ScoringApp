@@ -34,6 +34,7 @@ public class Team {
     public String getScore() { return score; }
     public void setScore(String score) { this.score = score; }
 
+    /** displays team data by name and score */
     public String display() {
         return name + " - " + score;
     }

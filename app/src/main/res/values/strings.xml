@@ -34,4 +34,6 @@
     <string name="title_activity_notification_board">NotificationBoard</string>
     <string name="title_activity_tournament_password">TournamentPassword</string>
     <string name="title_activity_enter_score">EnterScore</string>
+    <string name="title_activity_admin_options">AdminOptions</string>
+    <string name="title_activity_admin_add_or_delete">AdminAddOrDelete</string>
 </resources>

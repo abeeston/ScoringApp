@@ -42,6 +42,14 @@
             android:name=".EnterScore"
             android:label="@string/title_activity_enter_score" >
         </activity>
+        <activity
+            android:name=".AdminOptions"
+            android:label="@string/title_activity_admin_options" >
+        </activity>
+        <activity
+            android:name=".AdminAddOrDelete"
+            android:label="@string/title_activity_admin_add_or_delete" >
+        </activity>
     </application>
 
 </manifest>
