@@ -9,12 +9,12 @@ import java.util.Map;
  * Contains a single game
  */
 public class Game implements DatabaseObserver{
+    // TODO: Scores?
     private String tournamentID;   // The tournament id for grouping
     private String courtNum;       // Game court number
     private String location;       // Game location
     private String time;           // Time of the game (entered from the user)
-                                   // A Timestamp?
-    private String gameID; ///// TODO: Have a second constructor that doesn't need an ID
+    private String gameID;
     private Team team1;            // The first team
     private Team team2;            // The second team
 
@@ -81,8 +81,8 @@ public class Game implements DatabaseObserver{
         url.child("Games/" + tournamentID + "/" + gameID + "/location").setValue(location);
         url.child("Games/" + tournamentID + "/" + gameID + "/team1").setValue(team1.getName());
         url.child("Games/" + tournamentID + "/" + gameID + "/team2").setValue(team2.getName());
-        url.child("Games/" + tournamentID + "/" + gameID + "/score").setValue(team1.getScore() + "-" + team1.getScore());
-        url.child("Games/" + tournamentID + "/" + gameID + "/score").setValue(team2.getScore() + "-" + team2.getScore());
+        url.child("Games/" + tournamentID + "/" + gameID + "/score1").setValue(team1.getScore());
+        url.child("Games/" + tournamentID + "/" + gameID + "/score2").setValue(team2.getScore());
         url.child("Games/" + tournamentID + "/" + gameID + "/time").setValue(time);
 
     }
@@ -106,8 +106,8 @@ public class Game implements DatabaseObserver{
         post.put("location", location);
         post.put("team1", team1.getName());
         post.put("team2", team2.getName());
-        post.put("score", (team1.getScore() + "-" + team1.getScore()));
-        post.put("score", (team2.getScore() + "-" + team2.getScore()));
+        post.put("score1", team1.getScore());
+        post.put("score2", team2.getScore());
         post.put("time", time);
 
         //sets Firebase to match map
@@ -126,6 +126,6 @@ public class Game implements DatabaseObserver{
         if (courtNum == "1") {
             return (time + " " + location + " " + "\n" + team1.display() + "  " + team2.display());
         }
-        return (time + " " + location + " " + courtNum + "\n" + team1.display() + "  " + team2.display());
+        return (time + " " + location + " Court: " + courtNum + "\n" + team1.display() + "  " + team2.display());
     }
 }

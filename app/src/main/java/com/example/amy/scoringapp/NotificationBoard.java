@@ -30,9 +30,9 @@ public class NotificationBoard extends ActionBarActivity {
 
     private Context context;         // The context is used for the listview
     private List<Game> games;        // The list of games to be gained from the database
-    private ProgressBar progressBar; // The progress bar to be updated
     private Handler handler;         // For updating the progress bar
     private ListView listView;       // The list view to be updated and displayed to
+    private String tournID;
 
     /**
      * Gets the selected tournament from the previous page and initializes variables
@@ -44,7 +44,7 @@ public class NotificationBoard extends ActionBarActivity {
         setContentView(R.layout.activity_notification_board);
 
         Intent intent = getIntent();
-
+        tournID = intent.getStringExtra("TournamentID");
         //String spinValue = intent.getStringExtra("Spinner");
 
         //TextView t = (TextView) findViewById(R.id.textView17);
@@ -52,7 +52,6 @@ public class NotificationBoard extends ActionBarActivity {
 
         context = NotificationBoard.this.getApplicationContext();
         games = new ArrayList<Game>();
-        progressBar = (ProgressBar) findViewById(R.id.progressBar2);
         handler = new Handler();
 
         observeGames();
@@ -61,16 +60,14 @@ public class NotificationBoard extends ActionBarActivity {
     /**
      * Fills the listview with the data received from the database
      */
+
     public void fillList() {
         List<String> stringList = new ArrayList<>();
 
         // Go through all of the tournaments in available
-        int count = 0;
         for (Game g : games) {
             stringList.add(g.display());
-            count++;
         }
-        final int countFinal = count;
 
         // Use the array adapter to change the contents of the spinner
         listView = (ListView) findViewById(R.id.listView);
@@ -80,20 +77,16 @@ public class NotificationBoard extends ActionBarActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < countFinal; i++) {
-                    progressBar.setProgress(i * 10);
-                }
-                progressBar.setProgress(0);
             }
         });
-
     }
+
 
     /**
      * Gets the list of games from the database
      */
     public void observeGames() {
-        Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/Games");
+        Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/Games/" + tournID);
         Query queryRef = ref.orderByKey();
 
         /**
@@ -103,34 +96,30 @@ public class NotificationBoard extends ActionBarActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 // Read the data into a map
-
-                // TODO: This it the part that needs worked over. How do we get only the data that belongs to the tournament id?
                 Map<String, Object> newPost = (HashMap<String, Object>) dataSnapshot.getValue();
 
                 String id = dataSnapshot.getKey();
                 String court = (String) newPost.get("court");
                 String location = (String) newPost.get("location");
+                String score1 = (String) newPost.get("score1");
+                String score2 = (String) newPost.get("score2");
                 String team1name = (String) newPost.get("team1");
-                String team1score = (String) newPost.get("team1score");
+                String team2name = (String) newPost.get("team2");
+                String time = (String) newPost.get("time");
 
-                System.out.println("--------------------------PRINTING--------------------------------");
-                System.out.println(id);
-                System.out.println(court);
-                System.out.println(location);
-                System.out.println(team1name);
-                System.out.println(team1score);
+                // Create the two teams
+                Team team1 = new Team(team1name, score1);
+                Team team2 = new Team(team2name, score2);
 
-                // Create the tournament and add it to the list
-                //Game g = new Game ();
-                //Tournament t = new Tournament(id, date, location, password);
-                //MainActivity.this.available.add(t);
-                //games.add(g);
+                // Create the game and add it to the list
+                Game g = new Game (tournID, court, location, time, id, team1, team2);
+                games.add(g);
 
                 // Clear the map between reads
                 newPost.clear();
 
                 // Call the method to populate the spinner
-                //fillList();
+                fillList();
             }
 
             @Override
@@ -170,7 +159,8 @@ public class NotificationBoard extends ActionBarActivity {
     /**
      * Returns the item selected
      * @param item The item
-     * @return Boolean
+     * @return Boolean+++++
+     *
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

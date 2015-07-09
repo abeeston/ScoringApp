@@ -36,7 +36,7 @@ public class Team {
 
     /** displays team data by name and score */
     public String display() {
-        return name + " " + score;
+        return name + " - " + score;
     }
 
 }
