@@ -84,7 +84,7 @@ public class AdminActivity extends ActionBarActivity {
         post.put("password", tournPassword.getText().toString());
         ref.push().setValue(post);
 
-        Toast.makeText(getApplicationContext(), "Tournament saved successfully!",
+        Toast.makeText(getApplicationContext(), "Tournament added successfully",
                 Toast.LENGTH_LONG).show();
     }
 }
