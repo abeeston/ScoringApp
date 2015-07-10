@@ -88,7 +88,8 @@
         android:id="@+id/TournEdit"
         android:layout_below="@+id/editText4"
         android:layout_toLeftOf="@+id/textView21"
-        android:layout_toStartOf="@+id/textView21" />
+        android:layout_toStartOf="@+id/textView21"
+        android:background="#ff35ff49" />
 
     <Button
         android:layout_width="wrap_content"
@@ -97,6 +98,7 @@
         android:id="@+id/TournDelete"
         android:layout_alignTop="@+id/TournEdit"
         android:layout_alignRight="@+id/textView20"
-        android:layout_alignEnd="@+id/textView20" />
+        android:layout_alignEnd="@+id/textView20"
+        android:background="#b7ff0c02" />
 
 </RelativeLayout>

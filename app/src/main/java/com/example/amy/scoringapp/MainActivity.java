@@ -1,7 +1,9 @@
 package com.example.amy.scoringapp;
 
-import android.content.Context;
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
@@ -29,11 +31,8 @@ import java.util.Map;
 public class MainActivity extends ActionBarActivity {
 
     private List<Tournament> available;      // The list of tournaments to populate the spinner
-    private Tournament activeTournament;     // The active tournament
     private Spinner spinner;                 // Our spinner containing the tournaments
-    private static Context context;          // The context of our app
-    private Handler handler;                 // For multithreading with the progress bar
-    //private ProgressBar progressBar;         // Load progress
+    private Handler handler;                 // For multithreading when loading tournaments
 
     /**
      * Initialized the variables and calls observeTournament to fill the spinner
@@ -43,13 +42,14 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Configure our Firebase reference
-        Firebase.setAndroidContext(this);
+//        ActionBar bar = getActionBar();
+//        //for color
+//        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00C4CD")));
 
+        // Initialize variables
+        Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_main);
-        MainActivity.context = MainActivity.this.getApplicationContext();
         available = new ArrayList<>();
-        //progressBar = (ProgressBar) findViewById(R.id.progressBar);
         handler = new Handler();
 
         // Get the data from Firebase
@@ -63,12 +63,9 @@ public class MainActivity extends ActionBarActivity {
         List<String> stringList = new ArrayList<>();
 
         // Go through all of the tournaments in available
-        int count = 0;
         for (Tournament t : available) {
             stringList.add(t.display());
-            count++;
         }
-        final int countFinal = count;
 
         // Use the array adapter to change the contents of the spinner
         spinner = (Spinner) findViewById(R.id.spinner);
@@ -78,9 +75,6 @@ public class MainActivity extends ActionBarActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                //for (int i = 0; i < countFinal; i++) {
-                //progressBar.setProgress(100);
-                //progressBar.setProgress(0);
             }
         });
     }
@@ -108,7 +102,6 @@ public class MainActivity extends ActionBarActivity {
 
                 // Create the tournament and add it to the list
                 Tournament t = new Tournament(id, date, location, password);
-                //MainActivity.this.available.add(t);
                 available.add(t);
 
                 // Clear the map between reads
