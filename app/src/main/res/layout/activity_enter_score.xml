@@ -168,7 +168,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="onClickSubmit"
-        android:background="#ff35ff49" />
+        android:background="#7335ff49" />
 
     <Spinner
         android:layout_width="wrap_content"

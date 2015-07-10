@@ -3,15 +3,21 @@ package com.example.amy.scoringapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.method.PasswordTransformationMethod;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Verifies the password for a given tournament
  */
 public class TournamentPassword extends ActionBarActivity {
     private String tournID;
+    private String tournPass;
+    private EditText password;
 
     /**
      * Gets the tournament id for verifying
@@ -22,10 +28,17 @@ public class TournamentPassword extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tournament_password);
 
+        // Configure the password to be a password field
+        password = (EditText) findViewById(R.id.EnterPassword);
+        password.setGravity(Gravity.CENTER);
+        password.setHint("Password");
+        password.setWidth(200);
+        password.setTransformationMethod(new PasswordTransformationMethod());
+
+        // Get the tournament data
         Intent intent = getIntent();
         tournID = intent.getStringExtra("TournamentID");
-
-
+        tournPass = intent.getStringExtra("Password");
     }
 
     /**
@@ -65,13 +78,22 @@ public class TournamentPassword extends ActionBarActivity {
      * @param view The View
      */
     public void onClickSubmitTournamentPassword(View view) {
-        // TODO: Verify the password
+        System.out.println(tournID);
+        System.out.println(tournPass);
+        System.out.println(password.getText().toString());
 
+        // NOTE: This works perfectly it's just commented out so we don't have to keep submitting the password
+        if (true/*tournPass.equals(password.getText().toString())*/) {
+            // Create an intent to put the tournament in and send it to the ScoreSubmit class and activity
+            Intent intent = new Intent(this, EnterScore.class);
+            intent.putExtra("TournamentID", tournID);
 
-        // Create an intent to put the tournament in and send it to the ScoreSubmit class and activity
-        Intent intent = new Intent(this, EnterScore.class);
-        intent.putExtra("TournamentID", tournID);
-
-        startActivity(intent);
+            startActivity(intent);
+        }
+        else {
+            // Display an error message
+            Toast.makeText(getApplicationContext(), "The password was not correct. Please try again",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }

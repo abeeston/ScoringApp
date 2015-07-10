@@ -146,6 +146,10 @@ public class MainActivity extends ActionBarActivity {
         String id = available.get(position).getID();
         intent.putExtra("TournamentID", id);
 
+        // Get the password and send it for verifying
+        String password = available.get(position).getPassword();
+        intent.putExtra("Password", password);
+
         // Start
         startActivity(intent);
     }
