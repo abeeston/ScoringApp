@@ -48,12 +48,13 @@ public class MainActivity extends ActionBarActivity {
 
         // Initialize variables
         Firebase.setAndroidContext(this);
-        setContentView(R.layout.activity_main);
         available = new ArrayList<>();
         handler = new Handler();
 
         // Get the data from Firebase
         observeTournament();
+        setContentView(R.layout.activity_main);
+
     }
 
     /**
