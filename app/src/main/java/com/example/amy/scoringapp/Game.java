@@ -19,7 +19,7 @@ public class Game implements DatabaseObserver{
     private Team team2;            // The second team
 
     /**
-     * Default constructor; sets all parameters to court 100 at 12:00 PM
+     * Default constructor; sets all parameters to court 00 at 00:00 AM
      */
     public Game() {
         this.courtNum = "00";
@@ -30,6 +30,16 @@ public class Game implements DatabaseObserver{
         this.location = null;
     }
 
+    /**
+     *
+     * @param tournamentID
+     * @param courtNum
+     * @param location
+     * @param time
+     * @param gameID
+     * @param team1
+     * @param team2
+     */
     public Game(String tournamentID, String courtNum, String location, String time, String gameID, Team team1, Team team2) {
         this.tournamentID = tournamentID;
         this.courtNum = courtNum;
@@ -77,6 +87,10 @@ public class Game implements DatabaseObserver{
 
     }
 
+    /**
+     * Pushes the data from a game class to the Firebase table
+     * @param url the Firebase url to access
+     */
     @Override
     public void pushData(Firebase url) {
         //creates reference to games in tournament
@@ -103,6 +117,10 @@ public class Game implements DatabaseObserver{
         gameID = newPostRef.getKey();
     }
 
+    /**
+     * Displays a game formatted for a notification
+     * @return Displayable String
+     */
     @Override
     public String display() {
         if (courtNum == "1") {
