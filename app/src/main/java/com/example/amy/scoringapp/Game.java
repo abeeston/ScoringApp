@@ -123,9 +123,24 @@ public class Game implements DatabaseObserver{
      */
     @Override
     public String display() {
+        String text = null;
         if (courtNum == "1") {
-            return (time + " " + location + " " + "\n" + team1.display() + "  " + team2.display());
+            text = (time + " " + location + " " + "\n" + team1.display() + "  " + team2.display());
+        } else {
+            text = (time + " " + location + " Court: " + courtNum + "\n" + team1.display() + "  " + team2.display());
+            //text.setText(text.replace("\\n", "\n"));
         }
-        return (time + " " + location + " Court: " + courtNum + "\n" + team1.display() + "  " + team2.display());
+        return text;
+    }
+
+    public String display1() {
+        if (courtNum == "1") {
+            return (time + " " + location);
+        }
+        return (time + " " + location + " Court: " + courtNum);
+    }
+
+    public String display2() {
+        return team1.display() + "  " + team2.display();
     }
 }

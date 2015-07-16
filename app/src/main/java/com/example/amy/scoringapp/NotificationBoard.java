@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -69,9 +70,19 @@ public class NotificationBoard extends ActionBarActivity {
             stringList.add(g.display());
         }
 
+        List<TextView> games2 = new ArrayList<>();
+        for (Game g : games) {
+            TextView t = new TextView(this);
+            t.setSingleLine(false);
+            t.setMaxLines(2);
+            t.setText(g.display().replace("\\n", "\n"));
+
+            games2.add(t);
+        }
+
         // Use the array adapter to change the contents of the spinner
         listView = (ListView) findViewById(R.id.listView);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, stringList);
+        ArrayAdapter<TextView> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, games2);
         listView.setAdapter(adapter);
 
         handler.post(new Runnable() {
