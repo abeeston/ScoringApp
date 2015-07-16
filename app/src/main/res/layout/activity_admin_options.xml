@@ -12,21 +12,43 @@
         android:text="  Create New Tournament  "
         android:id="@+id/AdminGoToCreate"
         android:onClick="onClickAdminOptions"
+        android:layout_marginTop="77dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="164dp"
-        android:layout_alignLeft="@+id/button5"
-        android:layout_alignStart="@+id/button5"
-        android:layout_alignRight="@+id/button5"
-        android:layout_alignEnd="@+id/button5" />
+        android:layout_alignLeft="@+id/EditTournament"
+        android:layout_alignStart="@+id/EditTournament" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit or Delete Tournament"
-        android:id="@+id/button5"
+        android:text="Edit Selected Tournament"
+        android:id="@+id/EditTournament"
         android:nestedScrollingEnabled="true"
         android:onClick="onClickAddOrDelete"
+        android:layout_below="@+id/SpinnerEdit"
+        android:layout_alignLeft="@+id/DeleteSelectedTournament"
+        android:layout_alignStart="@+id/DeleteSelectedTournament"
+        android:layout_marginTop="39dp"
+        android:layout_alignRight="@+id/DeleteSelectedTournament"
+        android:layout_alignEnd="@+id/DeleteSelectedTournament" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SpinnerEdit"
+        android:spinnerMode="dropdown"
+        android:layout_marginTop="53dp"
         android:layout_below="@+id/AdminGoToCreate"
+        android:layout_alignLeft="@+id/EditTournament"
+        android:layout_alignStart="@+id/EditTournament"
+        android:layout_alignRight="@+id/AdminGoToCreate"
+        android:layout_alignEnd="@+id/AdminGoToCreate" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete Selected Tournament"
+        android:id="@+id/DeleteSelectedTournament"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_marginBottom="51dp" />
 </RelativeLayout>

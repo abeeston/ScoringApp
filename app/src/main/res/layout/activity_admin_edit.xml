@@ -4,26 +4,17 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.amy.scoringapp.AdminAddOrDelete">
+    tools:context="com.example.amy.scoringapp.AdminEditTournament">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Select A Tournament"
+        android:text="Edit Tournament"
         android:id="@+id/textView20"
         android:layout_marginTop="36dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
-
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TournamentEditSpinner"
-        android:layout_below="@+id/textView20"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp"
-        android:spinnerMode="dropdown" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,8 +22,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Name"
         android:id="@+id/textView21"
-        android:layout_below="@+id/TournamentEditSpinner"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/textView20"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -86,19 +78,8 @@
         android:layout_height="wrap_content"
         android:text="Edit"
         android:id="@+id/TournEdit"
+        android:background="#ff35ff49"
         android:layout_below="@+id/editText4"
-        android:layout_toLeftOf="@+id/textView21"
-        android:layout_toStartOf="@+id/textView21"
-        android:background="#ff35ff49" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete"
-        android:id="@+id/TournDelete"
-        android:layout_alignTop="@+id/TournEdit"
-        android:layout_alignRight="@+id/textView20"
-        android:layout_alignEnd="@+id/textView20"
-        android:background="#b7ff0c02" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

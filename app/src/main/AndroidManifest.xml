@@ -47,7 +47,7 @@
             android:label="@string/title_activity_admin_options" >
         </activity>
         <activity
-            android:name=".AdminAddOrDelete"
+            android:name=".AdminEditTournament"
             android:label="@string/title_activity_admin_add_or_delete" >
         </activity>
     </application>
