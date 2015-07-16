@@ -160,6 +160,8 @@ public class MainActivity extends ActionBarActivity {
      */
     public void onClickAdmin(View view) {
         Intent intent = new Intent(this, AdminLogin.class);
+
+        // Start
         startActivity(intent);
     }
 

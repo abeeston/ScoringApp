@@ -38,7 +38,7 @@ public class AdminOptions extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
     public void onClickAddOrDelete(View view) {
-        Intent intent = new Intent(this, AdminAddOrDelete.class);
+        Intent intent = new Intent(this, AdminEditTournament.class);
         startActivity(intent);
     }
 
