@@ -1,17 +1,54 @@
 package com.example.amy.scoringapp;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.firebase.client.Firebase;
 
 
 public class AdminEditTournament extends ActionBarActivity {
+
+    private String tournID;
+    private String location;
+    private String date;
+    private String password;
+
+    EditText locationEdit;
+    EditText dateEdit;
+    EditText passwordEdit;
+
+    Firebase refTourn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_edit);
+
+        Intent intent = getIntent();
+
+        tournID = intent.getStringExtra("TournamentID");
+        location = intent.getStringExtra("Location");
+        date = intent.getStringExtra("Date");
+        password = intent.getStringExtra("Password");
+
+        System.out.println(tournID + location + date + password);
+
+        EditText locationEdit = (EditText) findViewById(R.id.AdminTournName);
+        locationEdit.setText (location, TextView.BufferType.EDITABLE);
+
+        EditText dateEdit = (EditText)findViewById(R.id.AdminEditDate);
+        dateEdit.setText     (date, TextView.BufferType.EDITABLE);
+
+        EditText passwordEdit = (EditText)findViewById(R.id.AdminEditPassword);
+        passwordEdit.setText (password, TextView.BufferType.EDITABLE);
+
+        refTourn = new Firebase("https://scoresubmission.firebaseio.com/Tournaments");
     }
 
     @Override
@@ -34,6 +71,15 @@ public class AdminEditTournament extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClickAcceptEdit(View view) {
+        //refTourn = refTourn.child(tournID);
+
+
+        refTourn.child("location").setValue(location);
+        refTourn.child("date").setValue(date);
+        refTourn.child("password").setValue(password);
     }
 }
 
