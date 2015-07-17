@@ -125,7 +125,7 @@ public class Game implements DatabaseObserver{
     public String display() {
         String text = null;
         if (courtNum == "1") {
-            text = (time + " " + location + " " + "\n" + team1.display() + "  " + team2.display());
+            text = ("\n\t" + time + " " + location + " " + "\t\n" + team1.display() + "  " + team2.display());
         } else {
             text = (time + " " + location + " Court: " + courtNum + "\n" + team1.display() + "  " + team2.display());
             //text.setText(text.replace("\\n", "\n"));

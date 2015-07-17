@@ -2,14 +2,20 @@ package com.example.amy.scoringapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.firebase.client.ChildEventListener;
@@ -34,7 +40,7 @@ public class NotificationBoard extends ActionBarActivity {
     private Handler handler;         // For updating the progress bar
     private ListView listView;       // The list view to be updated and displayed to
     private String tournID;
-
+    private LinearLayout layout;
     /**
      * Gets the selected tournament from the previous page and initializes variables
      * @param savedInstanceState The saved instance state
@@ -55,7 +61,19 @@ public class NotificationBoard extends ActionBarActivity {
         games = new ArrayList<Game>();
         handler = new Handler();
 
+
+        ScrollView sv = new ScrollView(this);
+        layout = new LinearLayout(this);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        sv.addView(layout);
+
+            TextView tv = new TextView(this);
+            tv.setText("");
+            layout.addView(tv);
+
         observeGames();
+
+        this.setContentView(sv);
     }
 
     /**
@@ -63,27 +81,35 @@ public class NotificationBoard extends ActionBarActivity {
      */
 
     public void fillList() {
-        List<String> stringList = new ArrayList<>();
+//        List<String> stringList = new ArrayList<>();
+//
+//        // Go through all of the tournaments in available
+//        for (Game g : games) {
+//            stringList.add(g.display());
+//        }
 
-        // Go through all of the tournaments in available
+        layout.removeAllViews();
         for (Game g : games) {
-            stringList.add(g.display());
+            TextView t1 = new TextView(this);
+            t1.setText("\n\t" + g.display1());
+            t1.setTypeface(null, Typeface.BOLD);
+            layout.addView(t1);
+
+            TextView t2 = new TextView(this);
+            t2.setText("\t" + g.display2());
+            t2.setTypeface(null, Typeface.BOLD);
+            layout.addView(t2);
+
+            TextView sp = new TextView(this);
+            sp.setText("");
+            sp.setTypeface(null, Typeface.BOLD);
+            layout.addView(sp);
+
+            View line = new View(this);
+            line.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1));
+            line.setBackgroundColor(Color.rgb(51, 51, 51));
+            layout.addView(line);
         }
-
-        List<TextView> games2 = new ArrayList<>();
-        for (Game g : games) {
-            TextView t = new TextView(this);
-            t.setSingleLine(false);
-            t.setMaxLines(2);
-            t.setText(g.display().replace("\\n", "\n"));
-
-            games2.add(t);
-        }
-
-        // Use the array adapter to change the contents of the spinner
-        listView = (ListView) findViewById(R.id.listView);
-        ArrayAdapter<TextView> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, games2);
-        listView.setAdapter(adapter);
 
         handler.post(new Runnable() {
             @Override
