@@ -95,6 +95,9 @@ public class EnterScore extends ActionBarActivity {
 
         Toast.makeText(getApplicationContext(), "The score has been submitted",
                 Toast.LENGTH_LONG).show();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.example.amy.scoringapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -86,5 +87,9 @@ public class AdminActivity extends ActionBarActivity {
 
         Toast.makeText(getApplicationContext(), "Tournament added successfully",
                 Toast.LENGTH_LONG).show();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
     }
 }
