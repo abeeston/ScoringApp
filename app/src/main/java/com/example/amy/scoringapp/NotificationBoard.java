@@ -196,7 +196,6 @@ public class NotificationBoard extends ActionBarActivity {
      * Returns the item selected
      * @param item The item
      * @return Boolean+++++
-     *
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
