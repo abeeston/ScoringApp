@@ -75,21 +75,25 @@ public class AdminActivity extends ActionBarActivity {
         tournDate     = (EditText) findViewById(R.id.TournDate);
         tournPassword = (EditText) findViewById(R.id.TournPassword);
 
-        //creates reference to games in tournament
-        Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/Tournaments");
+        if (tournName.getText().toString().matches("") || tournDate.getText().toString().matches("")
+                || tournPassword.getText().toString().matches("")) {
+            Toast.makeText(getApplicationContext(), "One or More field not filled", Toast.LENGTH_LONG).show();
+        } else {
+            //creates reference to games in tournament
+            Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/Tournaments");
 
-        //create and push variables to hash map
-        Map<String, String> post = new HashMap<>();
-        post.put("date", tournDate.getText().toString());
-        post.put("location", tournName.getText().toString());
-        post.put("password", tournPassword.getText().toString());
-        ref.push().setValue(post);
+            //create and push variables to hash map
+            Map<String, String> post = new HashMap<>();
+            post.put("date", tournDate.getText().toString());
+            post.put("location", tournName.getText().toString());
+            post.put("password", tournPassword.getText().toString());
+            ref.push().setValue(post);
 
-        Toast.makeText(getApplicationContext(), "Tournament added successfully",
-                Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Tournament added successfully",
+                    Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 }
