@@ -135,12 +135,12 @@ public class Game implements DatabaseObserver{
 
     public String display1() {
         if (courtNum == "1") {
-            return (time + " " + location);
+            return (location + " " + time);
         }
-        return (time + " " + location + " Court: " + courtNum);
+        return (location + " Court: " + courtNum + " " + time);
     }
 
     public String display2() {
-        return team1.display() + "  " + team2.display();
+        return team1.display() + "    " + team2.display();
     }
 }

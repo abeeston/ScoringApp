@@ -35,12 +35,11 @@ import java.util.Map;
  */
 public class NotificationBoard extends ActionBarActivity {
 
-    private Context context;         // The context is used for the listview
     private List<Game> games;        // The list of games to be gained from the database
     private Handler handler;         // For updating the progress bar
-    private ListView listView;       // The list view to be updated and displayed to
-    private String tournID;
-    private LinearLayout layout;
+    private String tournID;          // To load games for only that tournament
+    private LinearLayout layout;     // The layout that will be added to
+
     /**
      * Gets the selected tournament from the previous page and initializes variables
      * @param savedInstanceState The saved instance state
@@ -57,7 +56,7 @@ public class NotificationBoard extends ActionBarActivity {
         //TextView t = (TextView) findViewById(R.id.textView17);
         //t.setText(spinValue);
 
-        context = NotificationBoard.this.getApplicationContext();
+        //context = NotificationBoard.this.getApplicationContext();
         games = new ArrayList<Game>();
         handler = new Handler();
 
@@ -67,9 +66,9 @@ public class NotificationBoard extends ActionBarActivity {
         layout.setOrientation(LinearLayout.VERTICAL);
         sv.addView(layout);
 
-            TextView tv = new TextView(this);
-            tv.setText("");
-            layout.addView(tv);
+//            TextView tv = new TextView(this);
+//            tv.setText("");
+//            layout.addView(tv);
 
         observeGames();
 
@@ -106,8 +105,8 @@ public class NotificationBoard extends ActionBarActivity {
             layout.addView(sp);
 
             View line = new View(this);
-            line.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1));
-            line.setBackgroundColor(Color.rgb(51, 51, 51));
+            line.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 2));
+            line.setBackgroundColor(Color.rgb(150, 240, 153));
             layout.addView(line);
         }
 
