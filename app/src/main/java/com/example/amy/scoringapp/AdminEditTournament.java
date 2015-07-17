@@ -8,11 +8,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.firebase.client.Firebase;
 
 
+/**
+ * Activity page for an administrator to edit
+ * an existing tournament.
+ */
+
+
 public class AdminEditTournament extends ActionBarActivity {
+
 
     private String tournID;
     private String location;
@@ -24,7 +30,10 @@ public class AdminEditTournament extends ActionBarActivity {
     EditText passwordEdit;
 
     Firebase refTourn;
-
+    /**
+     * Tranfer instant states
+     * @param savedInstanceState state of the instances
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +60,11 @@ public class AdminEditTournament extends ActionBarActivity {
         refTourn = new Firebase("https://scoresubmission.firebaseio.com/Tournaments");
     }
 
+    /**
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -58,6 +72,11 @@ public class AdminEditTournament extends ActionBarActivity {
         return true;
     }
 
+    /**
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
