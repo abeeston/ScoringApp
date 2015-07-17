@@ -86,13 +86,13 @@ public class NotificationBoard extends ActionBarActivity {
             // Team names and scores
             TextView t2 = new TextView(this);
             t2.setText("\t" + g.display2() + "\n");
-            t2.setTypeface(null, Typeface.BOLD);
+            //t2.setTypeface(null, Typeface.BOLD);
             layout.addView(t2);
 
             // Line Separator
             View line = new View(this);
             line.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 2));
-            line.setBackgroundColor(Color.rgb(150, 240, 153));
+            line.setBackgroundColor(Color.rgb(152, 219, 201));
             layout.addView(line);
         }
 
