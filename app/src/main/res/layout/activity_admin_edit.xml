@@ -66,12 +66,12 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText4"
+        android:id="@+id/AdminEditPassword"
         android:layout_below="@+id/textView22"
-        android:layout_alignLeft="@+id/textView20"
-        android:layout_alignStart="@+id/textView20"
         android:layout_alignRight="@+id/AdminEditDate"
-        android:layout_alignEnd="@+id/AdminEditDate" />
+        android:layout_alignEnd="@+id/AdminEditDate"
+        android:layout_alignLeft="@+id/AdminEditDate"
+        android:layout_alignStart="@+id/AdminEditDate" />
 
     <Button
         android:layout_width="wrap_content"
@@ -79,7 +79,8 @@
         android:text="Edit"
         android:id="@+id/TournEdit"
         android:background="#ff35ff49"
-        android:layout_below="@+id/editText4"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/AdminEditPassword"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickAcceptEdit" />
 
 </RelativeLayout>

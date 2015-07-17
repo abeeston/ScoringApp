@@ -23,7 +23,7 @@
         android:text="Edit Selected Tournament"
         android:id="@+id/EditTournament"
         android:nestedScrollingEnabled="true"
-        android:onClick="onClickAddOrDelete"
+        android:onClick="onClickEdit"
         android:layout_below="@+id/SpinnerEdit"
         android:layout_alignLeft="@+id/DeleteSelectedTournament"
         android:layout_alignStart="@+id/DeleteSelectedTournament"
@@ -49,5 +49,6 @@
         android:text="Delete Selected Tournament"
         android:id="@+id/DeleteSelectedTournament"
         android:layout_below="@+id/EditTournament"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickTournDelete" />
 </RelativeLayout>
