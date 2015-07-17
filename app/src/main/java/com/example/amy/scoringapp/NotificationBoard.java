@@ -51,24 +51,14 @@ public class NotificationBoard extends ActionBarActivity {
 
         Intent intent = getIntent();
         tournID = intent.getStringExtra("TournamentID");
-        //String spinValue = intent.getStringExtra("Spinner");
 
-        //TextView t = (TextView) findViewById(R.id.textView17);
-        //t.setText(spinValue);
-
-        //context = NotificationBoard.this.getApplicationContext();
         games = new ArrayList<Game>();
         handler = new Handler();
-
 
         ScrollView sv = new ScrollView(this);
         layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         sv.addView(layout);
-
-//            TextView tv = new TextView(this);
-//            tv.setText("");
-//            layout.addView(tv);
 
         observeGames();
 
@@ -80,13 +70,6 @@ public class NotificationBoard extends ActionBarActivity {
      */
 
     public void fillList() {
-//        List<String> stringList = new ArrayList<>();
-//
-//        // Go through all of the tournaments in available
-//        for (Game g : games) {
-//            stringList.add(g.display());
-//        }
-
         layout.removeAllViews();
         for (Game g : games) {
             TextView t1 = new TextView(this);
