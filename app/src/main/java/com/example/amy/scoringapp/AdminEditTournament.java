@@ -25,9 +25,9 @@ public class AdminEditTournament extends ActionBarActivity {
     private String date;
     private String password;
 
-    EditText locationEdit;
-    EditText dateEdit;
-    EditText passwordEdit;
+    private EditText locationEdit;
+    private EditText dateEdit;
+    private EditText passwordEdit;
 
     Firebase refTourn;
     /**
@@ -48,16 +48,17 @@ public class AdminEditTournament extends ActionBarActivity {
 
         System.out.println(tournID + location + date + password);
 
-        EditText locationEdit = (EditText) findViewById(R.id.AdminTournName);
+        locationEdit = (EditText) findViewById(R.id.AdminTournName);
         locationEdit.setText (location, TextView.BufferType.EDITABLE);
+        location = locationEdit.getText().toString();
 
-        EditText dateEdit = (EditText)findViewById(R.id.AdminEditDate);
+        dateEdit = (EditText)findViewById(R.id.AdminEditDate);
         dateEdit.setText     (date, TextView.BufferType.EDITABLE);
 
-        EditText passwordEdit = (EditText)findViewById(R.id.AdminEditPassword);
+        passwordEdit = (EditText)findViewById(R.id.AdminEditPassword);
         passwordEdit.setText (password, TextView.BufferType.EDITABLE);
 
-        refTourn = new Firebase("https://scoresubmission.firebaseio.com/Tournaments");
+        refTourn = new Firebase("https://scoresubmission.firebaseio.com/Tournaments/" + tournID);
     }
 
     /**
@@ -93,12 +94,10 @@ public class AdminEditTournament extends ActionBarActivity {
     }
 
     public void onClickAcceptEdit(View view) {
-        //refTourn = refTourn.child(tournID);
 
-
-        refTourn.child("location").setValue(location);
-        refTourn.child("date").setValue(date);
-        refTourn.child("password").setValue(password);
+        refTourn.child("location").setValue(locationEdit.getText().toString());
+        refTourn.child("date").setValue(dateEdit.getText().toString());
+        refTourn.child("password").setValue(passwordEdit.getText().toString());
     }
 }
 

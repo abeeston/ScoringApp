@@ -30,9 +30,9 @@ import java.util.Map;
  */
 public class MainActivity extends ActionBarActivity {
 
-    private List<Tournament> available;      // The list of tournaments to populate the spinner
-    private Spinner spinner;                 // Our spinner containing the tournaments
-    private Handler handler;                 // For multithreading when loading tournaments
+    private List<Tournament> available; // The list of tournaments to populate the spinner
+    private Spinner spinner;            // Our spinner containing the tournaments
+    private Handler handler;            // For multithreading when loading tournaments
 
     /**
      * Initialized the variables and calls observeTournament to fill the spinner
@@ -41,10 +41,6 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        ActionBar bar = getActionBar();
-//        //for color
-//        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00C4CD")));
 
         // Initialize variables
         Firebase.setAndroidContext(this);
