@@ -159,17 +159,15 @@ public class AdminOptions extends ActionBarActivity {
 
         // Get the location for editing purposes
         String location = available.get(position).getCity();
-        intent.putExtra("Location", locationString);
+        intent.putExtra("Location", location);
 
         // Get the date and send it for editing purposes.
         String date     = available.get(position).getDate();
-        intent.putExtra("Date", dateString);
+        intent.putExtra("Date", date);
 
         // Get the password and send it for editing
         String password = available.get(position).getPassword();
-        intent.putExtra("Password", passwordString);
-
-        System.out.println(locationString + passwordString + dateString + id);
+        intent.putExtra("Password", password);
 
         startActivity(intent);
     }
