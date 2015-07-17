@@ -6,15 +6,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Contains a single game
+ * Contains a single game with teams
+ * and their scores and where the game
+ * was played. Data in class can be pushed
+ * to or used to edit a Firebase database.
+ * Uses the constructor for data pulled.
+ * Does not pull it for you.
  */
 public class Game implements DatabaseObserver{
-    // TODO: Scores?
+
     private String tournamentID;   // The tournament id for grouping
     private String courtNum;       // Game court number
     private String location;       // Game location
     private String time;           // Time of the game (entered from the user)
-    private String gameID;
+    private String gameID;         // ID where game is stored in Firebase
     private Team team1;            // The first team
     private Team team2;            // The second team
 
@@ -31,14 +36,15 @@ public class Game implements DatabaseObserver{
     }
 
     /**
-     *
-     * @param tournamentID
-     * @param courtNum
-     * @param location
-     * @param time
-     * @param gameID
-     * @param team1
-     * @param team2
+     * Non Default constuctor for data already
+     * matched to and pulled from a Firebase.
+     * @param tournamentID ID for Firebase
+     * @param courtNum Gym Court number
+     * @param location Gym location
+     * @param time Time game started
+     * @param gameID ID for Firebase
+     * @param team1 Home team
+     * @param team2 Away team
      */
     public Game(String tournamentID, String courtNum, String location, String time, String gameID, Team team1, Team team2) {
         this.tournamentID = tournamentID;
@@ -50,6 +56,16 @@ public class Game implements DatabaseObserver{
         this.team2 = team2;
     }
 
+    /**
+     * Non Default constructor for data that doesn't
+     * Have a Firebase reference yet.
+     * @param tournamentID ID for Firebase
+     * @param courtNum Gym Court Number
+     * @param location Gym location
+     * @param time time game started
+     * @param team1 Home team
+     * @param team2 Away team
+     */
     public Game(String tournamentID, String courtNum, String location, String time, Team team1, Team team2) {
         this.tournamentID = tournamentID;
         this.courtNum = courtNum;
