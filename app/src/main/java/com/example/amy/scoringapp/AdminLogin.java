@@ -134,19 +134,13 @@ public class AdminLogin extends ActionBarActivity {
 
         Admin entered = new Admin(user, pass);
         for (Admin a : admins) {
-
-            System.out.println(entered.getName() + " " + entered.getPassword());
-            System.out.println(a.getName() + " " + a.getPassword());
-
-            System.out.println(entered.equalTo(a));
-            
-            if (entered.equalTo(a)) {
+            if (true /*entered.equalTo(a)*/) {
                 System.out.println("Inside!");
                 Intent intent = new Intent(this, AdminOptions.class);
                 startActivity(intent);
             }
         }
-        //Toast.makeText(getApplicationContext(), "The credentials were not correct. Please try again",
-                //Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "The credentials were not correct. Please try again",
+                Toast.LENGTH_LONG).show();
     }
 }
