@@ -13,7 +13,7 @@ public class Admin {
     }
 
     public boolean equalTo(Admin b) {
-        return (this.name == b.getName() && this.password == b.getPassword());
+        return (this.name.equals(b.getName()) && this.password.equals(b.getPassword()));
     }
 
     public String getName() {

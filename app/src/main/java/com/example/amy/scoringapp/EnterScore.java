@@ -90,14 +90,21 @@ public class EnterScore extends ActionBarActivity {
         Team team2 = new Team(team2name.getText().toString(), team2score.getText().toString());
 
         // Push the data
-        Game game = new Game(tournID, courtNum.getText().toString(), location.getText().toString(), time, team1, team2);
-        game.pushData(ref);
+        if (location.getText().toString().matches("") || team1name.getText().toString().matches("")
+                || team1score.getText().toString().matches("")
+                || team2name.getText().toString().matches("")
+                || team2score.getText().toString().matches(""))
+            Toast.makeText(getApplicationContext(), "One or More field not filled", Toast.LENGTH_LONG).show();
+        else {
+            Game game = new Game(tournID, courtNum.getText().toString(), location.getText().toString(), time, team1, team2);
+            game.pushData(ref);
 
-        Toast.makeText(getApplicationContext(), "The score has been submitted",
-                Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "The score has been submitted",
+                    Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 
     /**
