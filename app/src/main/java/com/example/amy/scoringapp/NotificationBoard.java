@@ -49,19 +49,24 @@ public class NotificationBoard extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_board);
 
+        // Get the tournament id
         Intent intent = getIntent();
         tournID = intent.getStringExtra("TournamentID");
 
+        // Initialize variables
         games = new ArrayList<Game>();
         handler = new Handler();
 
+        // Initialize layout
         ScrollView sv = new ScrollView(this);
         layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         sv.addView(layout);
 
+        // Get all the games for the given tournament
         observeGames();
 
+        // Set the content view
         this.setContentView(sv);
     }
 
@@ -72,27 +77,26 @@ public class NotificationBoard extends ActionBarActivity {
     public void fillList() {
         layout.removeAllViews();
         for (Game g : games) {
+            // Location, Court number, Time
             TextView t1 = new TextView(this);
             t1.setText("\n\t" + g.display1());
             t1.setTypeface(null, Typeface.BOLD);
             layout.addView(t1);
 
+            // Team names and scores
             TextView t2 = new TextView(this);
-            t2.setText("\t" + g.display2());
+            t2.setText("\t" + g.display2() + "\n");
             t2.setTypeface(null, Typeface.BOLD);
             layout.addView(t2);
 
-            TextView sp = new TextView(this);
-            sp.setText("");
-            sp.setTypeface(null, Typeface.BOLD);
-            layout.addView(sp);
-
+            // Line Separator
             View line = new View(this);
             line.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 2));
             line.setBackgroundColor(Color.rgb(150, 240, 153));
             layout.addView(line);
         }
 
+        // For handling multithreading
         handler.post(new Runnable() {
             @Override
             public void run() {
