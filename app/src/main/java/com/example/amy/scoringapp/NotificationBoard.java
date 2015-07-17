@@ -35,12 +35,11 @@ import java.util.Map;
  */
 public class NotificationBoard extends ActionBarActivity {
 
-    private Context context;         // The context is used for the listview
     private List<Game> games;        // The list of games to be gained from the database
     private Handler handler;         // For updating the progress bar
-    private ListView listView;       // The list view to be updated and displayed to
-    private String tournID;
-    private LinearLayout layout;
+    private String tournID;          // To load games for only that tournament
+    private LinearLayout layout;     // The layout that will be added to
+
     /**
      * Gets the selected tournament from the previous page and initializes variables
      * @param savedInstanceState The saved instance state
@@ -52,24 +51,14 @@ public class NotificationBoard extends ActionBarActivity {
 
         Intent intent = getIntent();
         tournID = intent.getStringExtra("TournamentID");
-        //String spinValue = intent.getStringExtra("Spinner");
 
-        //TextView t = (TextView) findViewById(R.id.textView17);
-        //t.setText(spinValue);
-
-        context = NotificationBoard.this.getApplicationContext();
         games = new ArrayList<Game>();
         handler = new Handler();
-
 
         ScrollView sv = new ScrollView(this);
         layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         sv.addView(layout);
-
-            TextView tv = new TextView(this);
-            tv.setText("");
-            layout.addView(tv);
 
         observeGames();
 
@@ -81,13 +70,6 @@ public class NotificationBoard extends ActionBarActivity {
      */
 
     public void fillList() {
-//        List<String> stringList = new ArrayList<>();
-//
-//        // Go through all of the tournaments in available
-//        for (Game g : games) {
-//            stringList.add(g.display());
-//        }
-
         layout.removeAllViews();
         for (Game g : games) {
             TextView t1 = new TextView(this);
@@ -106,8 +88,8 @@ public class NotificationBoard extends ActionBarActivity {
             layout.addView(sp);
 
             View line = new View(this);
-            line.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1));
-            line.setBackgroundColor(Color.rgb(51, 51, 51));
+            line.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 2));
+            line.setBackgroundColor(Color.rgb(150, 240, 153));
             layout.addView(line);
         }
 
