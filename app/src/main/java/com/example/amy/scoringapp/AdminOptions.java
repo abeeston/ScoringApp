@@ -155,7 +155,7 @@ public class AdminOptions extends ActionBarActivity {
         int position = spinner.getSelectedItemPosition();
 
         String id = available.get(position).getID();
-        intent.putExtra("TournamentID", idString);
+        intent.putExtra("TournamentID", id);
 
         // Get the location for editing purposes
         String location = available.get(position).getCity();
@@ -191,6 +191,11 @@ public class AdminOptions extends ActionBarActivity {
 
         observeTournament();
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickAdminSettings(View view){
+        Intent intent = new Intent (this, EditAddDeleteAdmin.class);
         startActivity(intent);
     }
 

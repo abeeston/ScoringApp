@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.firebase.client.Firebase;
 
 
@@ -46,11 +48,9 @@ public class AdminEditTournament extends ActionBarActivity {
         date = intent.getStringExtra("Date");
         password = intent.getStringExtra("Password");
 
-        System.out.println(tournID + location + date + password);
 
         locationEdit = (EditText) findViewById(R.id.AdminTournName);
         locationEdit.setText (location, TextView.BufferType.EDITABLE);
-        location = locationEdit.getText().toString();
 
         dateEdit = (EditText)findViewById(R.id.AdminEditDate);
         dateEdit.setText     (date, TextView.BufferType.EDITABLE);
@@ -98,6 +98,12 @@ public class AdminEditTournament extends ActionBarActivity {
         refTourn.child("location").setValue(locationEdit.getText().toString());
         refTourn.child("date").setValue(dateEdit.getText().toString());
         refTourn.child("password").setValue(passwordEdit.getText().toString());
+
+        Toast.makeText(getApplicationContext(), "Edit successful!",
+                Toast.LENGTH_LONG).show();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
 

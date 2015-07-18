@@ -50,6 +50,10 @@
             android:name=".AdminEditTournament"
             android:label="@string/title_activity_admin_add_or_delete" >
         </activity>
+        <activity
+            android:name=".EditAddDeleteAdmin"
+            android:label="@string/title_activity_edit_add_delete_admin" >
+        </activity>
     </application>
 
 </manifest>

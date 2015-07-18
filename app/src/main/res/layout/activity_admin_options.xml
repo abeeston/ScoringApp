@@ -27,7 +27,6 @@
         android:layout_below="@+id/SpinnerEdit"
         android:layout_alignLeft="@+id/DeleteSelectedTournament"
         android:layout_alignStart="@+id/DeleteSelectedTournament"
-        android:layout_marginTop="39dp"
         android:layout_alignRight="@+id/DeleteSelectedTournament"
         android:layout_alignEnd="@+id/DeleteSelectedTournament" />
 
@@ -40,8 +39,8 @@
         android:layout_below="@+id/AdminGoToCreate"
         android:layout_alignLeft="@+id/EditTournament"
         android:layout_alignStart="@+id/EditTournament"
-        android:layout_alignRight="@+id/AdminGoToCreate"
-        android:layout_alignEnd="@+id/AdminGoToCreate" />
+        android:layout_alignRight="@+id/EditTournament"
+        android:layout_alignEnd="@+id/EditTournament" />
 
     <Button
         android:layout_width="wrap_content"
@@ -51,4 +50,17 @@
         android:layout_below="@+id/EditTournament"
         android:layout_centerHorizontal="true"
         android:onClick="onClickTournDelete" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Admin Settings"
+        android:id="@+id/AdminAddEditDeleteAdmin"
+        android:layout_marginTop="41dp"
+        android:layout_below="@+id/DeleteSelectedTournament"
+        android:layout_alignLeft="@+id/DeleteSelectedTournament"
+        android:layout_alignStart="@+id/DeleteSelectedTournament"
+        android:layout_alignRight="@+id/DeleteSelectedTournament"
+        android:layout_alignEnd="@+id/DeleteSelectedTournament"
+        android:onClick="onClickAdminSettings" />
 </RelativeLayout>
