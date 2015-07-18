@@ -78,9 +78,10 @@
         android:layout_height="wrap_content"
         android:text="Edit"
         android:id="@+id/TournEdit"
-        android:background="#ff35ff49"
+        android:background="#ff00004e"
         android:layout_below="@+id/AdminEditPassword"
         android:layout_centerHorizontal="true"
-        android:onClick="onClickAcceptEdit" />
+        android:onClick="onClickAcceptEdit"
+        android:textColor="#ffffffff" />
 
 </RelativeLayout>

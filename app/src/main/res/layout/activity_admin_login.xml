@@ -53,6 +53,8 @@
         android:id="@+id/Login"
         android:onClick="onClickAdminLogin"
         android:layout_below="@+id/AdminPassword"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="#ff00004e"
+        android:textColor="#ffffffff" />
 
 </RelativeLayout>

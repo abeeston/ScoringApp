@@ -74,7 +74,8 @@
         android:layout_marginTop="48dp"
         android:layout_below="@+id/TournPassword"
         android:layout_toRightOf="@+id/textView14"
-        android:background="#ff35ff49"
-        android:onClick="onClickAdminActivity" />
+        android:onClick="onClickAdminActivity"
+        android:background="#ff00004e"
+        android:textColor="#ffffffff" />
 
 </RelativeLayout>

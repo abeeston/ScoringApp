@@ -49,6 +49,8 @@
         android:id="@+id/ConfirmAdminChanges"
         android:layout_below="@+id/AdminPassword"
         android:layout_centerHorizontal="true"
-        android:onClick="onClickConfirmEdit" />
+        android:onClick="onClickConfirmEdit"
+        android:background="#ff00004e"
+        android:textColor="#ffffffff" />
 
 </RelativeLayout>
