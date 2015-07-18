@@ -149,13 +149,21 @@ public class Game implements DatabaseObserver{
         return text;
     }
 
+    /**
+     * Used for displaying the first line in the Notification Board
+     * @return String first line
+     */
     public String display1() {
         if (courtNum == "1") {
             return (location + " " + time);
         }
-        return (location + " Court: " + courtNum + " " + time);
+        return (location + " Court: " + courtNum + " - " + time);
     }
 
+    /**
+     * Used for displaying the second line in the Notification Board
+     * @return String second line
+     */
     public String display2() {
         return team1.display() + "    " + team2.display();
     }

@@ -25,7 +25,8 @@
         android:onClick="onClickSubmitScore"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:background="#ff0eb37c" />
+        android:background="#ff0eb37c"
+        android:textColor="#ffffffff" />
 
     <Button
         android:layout_width="wrap_content"
@@ -39,7 +40,8 @@
         android:layout_marginTop="39dp"
         android:layout_alignLeft="@+id/button"
         android:layout_alignStart="@+id/button"
-        android:background="#ff0eb37c" />
+        android:background="#ff0eb37c"
+        android:textColor="#ffffffff" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -63,7 +65,8 @@
         android:id="@+id/textView"
         android:layout_above="@+id/spinner"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#ff0eb37c" />
 
 
 </RelativeLayout>
