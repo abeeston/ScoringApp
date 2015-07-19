@@ -139,12 +139,11 @@ public class Game implements DatabaseObserver{
      */
     @Override
     public String display() {
-        String text = null;
+        String text;
         if (courtNum == "1") {
             text = ("\n\t" + time + " " + location + " " + "\t\n" + team1.display() + "  " + team2.display());
         } else {
             text = (time + " " + location + " Court: " + courtNum + "\n" + team1.display() + "  " + team2.display());
-            //text.setText(text.replace("\\n", "\n"));
         }
         return text;
     }

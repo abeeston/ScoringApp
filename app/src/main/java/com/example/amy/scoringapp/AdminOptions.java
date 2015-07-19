@@ -24,12 +24,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ *
+ */
 public class AdminOptions extends ActionBarActivity {
 
-    private List<Tournament> available = new ArrayList<>();      // The list of tournaments to populate the spinner
-    private Spinner spinner;                 // Our spinner containing the tournaments
-    private Handler handler = new Handler();                 // For multithreading when loading tournaments
+    private List<Tournament> available = new ArrayList<>(); // The list of tournaments to populate the spinner
+    private Spinner spinner;                                // Our spinner containing the tournaments
+    private Handler handler = new Handler();                // For multithreading when loading tournaments
 
     private EditText location;
     private EditText date;

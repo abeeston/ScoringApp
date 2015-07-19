@@ -40,7 +40,7 @@ public class NotificationBoard extends ActionBarActivity {
     private Handler handler;         // For updating the progress bar
     private String tournID;          // To load games for only that tournament
     private LinearLayout layout;     // The layout that will be added to
-    private List<Game> displayGames; // The list for display
+
     /**
      * Gets the selected tournament from the previous page and initializes variables
      * @param savedInstanceState The saved instance state
@@ -56,7 +56,6 @@ public class NotificationBoard extends ActionBarActivity {
 
         // Initialize variables
         games = new ArrayList<>();
-        displayGames = new ArrayList<>();
         handler = new Handler();
 
         // Initialize layout
@@ -78,8 +77,8 @@ public class NotificationBoard extends ActionBarActivity {
 
     public void fillList() {
         layout.removeAllViews();
-
         for (Game g : games) {
+
             // Location, Court number, Time
             TextView t1 = new TextView(this);
             t1.setText("\n\t" + g.display1());
@@ -136,7 +135,7 @@ public class NotificationBoard extends ActionBarActivity {
                 Team team1 = new Team(team1name, score1);
                 Team team2 = new Team(team2name, score2);
 
-                // Create the game and add it to the list
+                // Create the game and add it to the beginning of the list
                 Game g = new Game (tournID, court, location, time, id, team1, team2);
                 games.add(0, g);
 
@@ -184,7 +183,7 @@ public class NotificationBoard extends ActionBarActivity {
     /**
      * Returns the item selected
      * @param item The item
-     * @return Boolean+++++
+     * @return Boolean
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

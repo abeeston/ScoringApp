@@ -27,10 +27,6 @@
             android:label="@string/title_activity_admin_login" >
         </activity>
         <activity
-            android:name=".LoginError"
-            android:label="@string/title_activity_login_error" >
-        </activity>
-        <activity
             android:name=".NotificationBoard"
             android:label="@string/title_activity_notification_board" >
         </activity>

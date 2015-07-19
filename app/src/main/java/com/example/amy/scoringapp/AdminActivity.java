@@ -15,7 +15,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  Admin Activity controls things that only the admin can do.
+ *  Admin Activity controls things that only the admin can do such as
+ *  updating, deleting and creating tournaments.
  *
  */
 public class AdminActivity extends ActionBarActivity {

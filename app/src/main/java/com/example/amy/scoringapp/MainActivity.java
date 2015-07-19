@@ -50,7 +50,6 @@ public class MainActivity extends ActionBarActivity {
         // Get the data from Firebase
         observeTournament();
         setContentView(R.layout.activity_main);
-
     }
 
     /**
@@ -170,10 +169,6 @@ public class MainActivity extends ActionBarActivity {
     public void onClickNotificationBoard(View view) {
         Intent intent = new Intent(this, NotificationBoard.class);
 
-        // Send what's in the spinner in case we want to display it //////////////NOTE: Not completely necessary but we might use it
-//        String spinValue = spinner.getSelectedItem().toString();
-//        intent.putExtra("Spinner", spinValue);
-
         // Get the selected item and send the tournament's id for updating the game
         int position = spinner.getSelectedItemPosition();
         String id = available.get(position).getID();
@@ -198,7 +193,7 @@ public class MainActivity extends ActionBarActivity {
     /**
      * Returns the item selected
      * @param item The item
-     * @return
+     * @return boolean
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

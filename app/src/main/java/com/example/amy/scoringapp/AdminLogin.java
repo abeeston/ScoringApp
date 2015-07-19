@@ -24,10 +24,15 @@ import java.util.Map;
  *  Handles the admin login
  */
 public class AdminLogin extends ActionBarActivity {
+
     private List<Admin> admins;
     private EditText username;
     private EditText password;
 
+    /**
+     * Starts and initializes variables
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

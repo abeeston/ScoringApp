@@ -17,10 +17,7 @@ import com.firebase.client.Firebase;
  * Activity page for an administrator to edit
  * an existing tournament.
  */
-
-
 public class AdminEditTournament extends ActionBarActivity {
-
 
     private String tournID;
     private String location;
@@ -31,9 +28,10 @@ public class AdminEditTournament extends ActionBarActivity {
     private EditText dateEdit;
     private EditText passwordEdit;
 
-    Firebase refTourn;
+    private Firebase refTourn;
+
     /**
-     * Tranfer instant states
+     * Tranfer instance states
      * @param savedInstanceState state of the instances
      */
     @Override
@@ -41,6 +39,7 @@ public class AdminEditTournament extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_edit);
 
+        // Get data passed from previous activity
         Intent intent = getIntent();
 
         tournID = intent.getStringExtra("TournamentID");
@@ -48,7 +47,7 @@ public class AdminEditTournament extends ActionBarActivity {
         date = intent.getStringExtra("Date");
         password = intent.getStringExtra("Password");
 
-
+        // Get the content of the fields
         locationEdit = (EditText) findViewById(R.id.AdminTournName);
         locationEdit.setText (location, TextView.BufferType.EDITABLE);
 
@@ -74,7 +73,7 @@ public class AdminEditTournament extends ActionBarActivity {
     }
 
     /**
-     *
+     * Selects the options item
      * @param item
      * @return
      */
@@ -93,6 +92,10 @@ public class AdminEditTournament extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Passes the data to the next activity
+     * @param view View
+     */
     public void onClickAcceptEdit(View view) {
 
         refTourn.child("location").setValue(locationEdit.getText().toString());
