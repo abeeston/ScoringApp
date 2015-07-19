@@ -38,11 +38,12 @@ public class AdminLogin extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_login);
 
+        // Initialize the variables
         username = (EditText) findViewById(R.id.AdminUsername);
         password = (EditText) findViewById(R.id.AdminPassword);
-
         admins = new ArrayList<>();
 
+        // Get the Administrators from the database
         getAdmins();
     }
 
@@ -134,18 +135,26 @@ public class AdminLogin extends ActionBarActivity {
      * @param view The view
      */
     public void onClickAdminLogin(View view) {
+        // Get the entered data
         String user = username.getText().toString();
         String pass = password.getText().toString();
 
+        // Test if the Admin is found in the database of administrators and validate
         Admin entered = new Admin(user, pass);
+        boolean found = false;
         for (Admin a : admins) {
-            if (true /*entered.equalTo(a)*/) {
+            if (entered.equalTo(a)) {
+                found = true;
                 System.out.println("Inside!");
                 Intent intent = new Intent(this, AdminOptions.class);
                 startActivity(intent);
             }
         }
-        Toast.makeText(getApplicationContext(), "The credentials were not correct. Please try again",
-                Toast.LENGTH_LONG).show();
+
+        // If it wasn't found display a message to the user
+        if (!found) {
+            Toast.makeText(getApplicationContext(), "The credentials were not correct. Please try again",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }

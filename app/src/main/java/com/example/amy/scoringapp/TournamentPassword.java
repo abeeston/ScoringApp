@@ -79,7 +79,7 @@ public class TournamentPassword extends ActionBarActivity {
      */
     public void onClickSubmitTournamentPassword(View view) {
         // NOTE: This works perfectly it's just commented out so we don't have to keep submitting the password
-        if (true/*tournPass.equals(password.getText().toString())*/) {
+        if (tournPass.equals(password.getText().toString())) {
             // Create an intent to put the tournament in and send it to the ScoreSubmit class and activity
             Intent intent = new Intent(this, EnterScore.class);
             intent.putExtra("TournamentID", tournID);
