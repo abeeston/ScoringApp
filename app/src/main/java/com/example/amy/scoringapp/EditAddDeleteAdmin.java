@@ -10,7 +10,10 @@ import android.widget.EditText;
 import com.firebase.client.Firebase;
 
 /**
+ * EDIT ADD DELETE ADMIN
+ *   This class will edit and add a new administrator to FireBase.
  *
+ *   Contains no class variables.
  */
 public class EditAddDeleteAdmin extends ActionBarActivity {
 
@@ -42,18 +45,21 @@ public class EditAddDeleteAdmin extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /*
+     * OnClickConfirmEdit
+     *  Member creates two EditText boxes for the admin name and password, and a FireBase ref
+     *  for pushing the data.
+     */
     public void onClickConfirmEdit(View view){
 
         EditText adminName = (EditText) findViewById(R.id.AdminName);
         EditText adminPassword = (EditText) findViewById(R.id.AdminPassword);
 
+        // creating a new reference to the admin name that will be pushed on.  The way FireBase works,
+        // if information is stored under password, the admin name is automatically created, so
+        // we do not need to.
         Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/Admin/" + adminName.getText().toString());
-
-        //ref.child("date").setValue(adminName.getText().toString());
         ref.child("Password").setValue(adminPassword.getText().toString());
 
     }
-
-
-
 }

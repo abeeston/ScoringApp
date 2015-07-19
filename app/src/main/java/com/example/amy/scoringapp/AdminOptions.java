@@ -25,7 +25,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Class that handles the main administrator page options for the app.
  *
+ * Variables:
+ * A list of available tournaments - Necessary for editing and deleting.
+ * A spinner                       - filled by the list of tournaments
+ * A handler                       - for multithreading purposes
+ * Group of Strings                - contains necessary location, date, password, and id that will
+ *                                   be passed onto the next pages.
  */
 public class AdminOptions extends ActionBarActivity {
 
@@ -33,23 +40,24 @@ public class AdminOptions extends ActionBarActivity {
     private Spinner spinner;                                // Our spinner containing the tournaments
     private Handler handler = new Handler();                // For multithreading when loading tournaments
 
-    private EditText location;
-    private EditText date;
-    private EditText password;
-
     private String locationString;
     private String dateString;
     private String passwordString;
     private String idString;
 
+    /*
+     * OnCreate will simply fill the spinner with a list of tournaments.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_options);
         observeTournament();
-
     }
 
+    /*
+     * default
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -57,6 +65,9 @@ public class AdminOptions extends ActionBarActivity {
         return true;
     }
 
+    /*
+     * default
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -72,9 +83,9 @@ public class AdminOptions extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
-
+    /*
+     * Fills the spinner with the proper tournament values.
+     */
     public void fillSpinner() {
         List<String> stringList = new ArrayList<>();
 
@@ -88,6 +99,7 @@ public class AdminOptions extends ActionBarActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, stringList);
         spinner.setAdapter(adapter);
 
+        // handler to fill the spinner.
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -95,7 +107,12 @@ public class AdminOptions extends ActionBarActivity {
         });
     }
 
-
+    /*
+     * In order to upload anything from FireBase, it is necessary to create an event listener and
+     * pull off the information.
+     *
+     * function contains a FireBase reference to Tournaments, and a Query to withdraw the info.
+     */
     public void observeTournament() {
         Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/Tournaments");
         Query queryRef = ref.orderByKey();
@@ -109,6 +126,7 @@ public class AdminOptions extends ActionBarActivity {
                 // Read the data into a map
                 Map<String, Object> newPost = (HashMap<String, Object>) dataSnapshot.getValue();
 
+                // populate the strings with information.
                 idString = dataSnapshot.getKey();
                 dateString = (String) newPost.get("date");
                 locationString = (String) newPost.get("location");
@@ -148,8 +166,11 @@ public class AdminOptions extends ActionBarActivity {
         });
     }
 
-
-
+    /*
+     * OnClickEdit:
+     *   Gathers the information from the spinner that was selected.  Enters into a new intent
+     *   and takes the information with it.
+     */
     public void onClickEdit(View view) {
         Intent intent = new Intent(this, AdminEditTournament.class);
 
@@ -174,31 +195,49 @@ public class AdminOptions extends ActionBarActivity {
         startActivity(intent);
     }
 
+    /*
+     * Goes into the Tournament Creation Activity.
+     */
     public void onClickTournCreate(View view) {
         Intent intent = new Intent(this, AdminActivity.class);
         startActivity(intent);
     }
 
+    /*
+     * OnClickTournDelete
+     *   Takes the tournament ID from the spinner, and removes the tournament and its respective
+     *   games from FireBase.
+     *
+     *   Sends back to the main screen.
+     */
     public void onClickTournDelete(View view) {
+        // spinner position
         int position = spinner.getSelectedItemPosition();
         String id = available.get(position).getID();
 
+        // we need two firebase references, one for games, one for tournaments.
         Firebase ref = new Firebase("https://scoresubmission.firebaseio.com/Tournaments");
         Firebase refGame = new Firebase("https://scoresubmission.firebaseio.com/Games");
+
+        // removes these values from FireBase
         ref.child(id).removeValue();
         refGame.child(id).removeValue();
 
+        // Toast.
         Toast.makeText(getApplicationContext(), "The Tournament has been deleted.",
                 Toast.LENGTH_LONG).show();
 
-        observeTournament();
+        // Returns to main screen, where everything will once again update.
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
+    /*
+     * OnClickAdminSettings:
+     *   Goes into the admin settings screen.
+     */
     public void onClickAdminSettings(View view){
         Intent intent = new Intent (this, EditAddDeleteAdmin.class);
         startActivity(intent);
     }
-
 }

@@ -19,15 +19,19 @@ import com.firebase.client.Firebase;
  */
 public class AdminEditTournament extends ActionBarActivity {
 
+    // this set of strings is going to house the initial strings before the user edits it.
     private String tournID;
     private String location;
     private String date;
     private String password;
 
+    // These edit text boxes will be used to pull data from the edit text and store it on the
+    // server.
     private EditText locationEdit;
     private EditText dateEdit;
     private EditText passwordEdit;
 
+    // refTourn will dynamically push new data onto FireBase based on the tournament ID.
     private Firebase refTourn;
 
     /**
@@ -57,6 +61,7 @@ public class AdminEditTournament extends ActionBarActivity {
         passwordEdit = (EditText)findViewById(R.id.AdminEditPassword);
         passwordEdit.setText (password, TextView.BufferType.EDITABLE);
 
+        // assign refTourn to the specific tournament in question.
         refTourn = new Firebase("https://scoresubmission.firebaseio.com/Tournaments/" + tournID);
     }
 
@@ -93,18 +98,22 @@ public class AdminEditTournament extends ActionBarActivity {
     }
 
     /**
-     * Passes the data to the next activity
+     * This function will push information onto Firebase and redirect the user back to the
+     * main page.
      * @param view View
      */
     public void onClickAcceptEdit(View view) {
 
+        // each key will be pushed into Firebase, editing the information.
         refTourn.child("location").setValue(locationEdit.getText().toString());
         refTourn.child("date").setValue(dateEdit.getText().toString());
         refTourn.child("password").setValue(passwordEdit.getText().toString());
 
+        // Toast.
         Toast.makeText(getApplicationContext(), "Edit successful!",
                 Toast.LENGTH_LONG).show();
 
+        // Intent will send the user back to the main page.
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
