@@ -26,15 +26,15 @@
         <item>AM</item>
         <item>PM</item>
     </string-array>
-    <string name="title_activity_admin">Create an Event</string>
+    <string name="title_activity_admin">Create a New Tournament</string>
     <string name="title_activity_admin_login">Admin Login</string>
     <string name="title_activity_login_error">Login Error</string>
     <string name="title_activity_notification_board">Notification Board</string>
     <string name="title_activity_tournament_password">Tournament Password</string>
     <string name="title_activity_enter_score">Enter Score</string>
     <string name="title_activity_admin_options">Admin Options</string>
-    <string name="title_activity_admin_add_or_delete">Admin Add or Delete</string>
-    <string name="title_activity_edit_add_delete_admin">EditAddDeleteAdmin</string>
+    <string name="title_activity_admin_add_or_delete">Change a Tournament\'s Data</string>
+    <string name="title_activity_edit_add_delete_admin">Update Password</string>
 
     <string name="hello_world">Hello world!</string>
 </resources>

@@ -25,6 +25,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +40,7 @@ public class NotificationBoard extends ActionBarActivity {
     private Handler handler;         // For updating the progress bar
     private String tournID;          // To load games for only that tournament
     private LinearLayout layout;     // The layout that will be added to
-
+    private List<Game> displayGames; // The list for display
     /**
      * Gets the selected tournament from the previous page and initializes variables
      * @param savedInstanceState The saved instance state
@@ -54,7 +55,8 @@ public class NotificationBoard extends ActionBarActivity {
         tournID = intent.getStringExtra("TournamentID");
 
         // Initialize variables
-        games = new ArrayList<Game>();
+        games = new ArrayList<>();
+        displayGames = new ArrayList<>();
         handler = new Handler();
 
         // Initialize layout
@@ -76,6 +78,7 @@ public class NotificationBoard extends ActionBarActivity {
 
     public void fillList() {
         layout.removeAllViews();
+
         for (Game g : games) {
             // Location, Court number, Time
             TextView t1 = new TextView(this);
@@ -86,7 +89,6 @@ public class NotificationBoard extends ActionBarActivity {
             // Team names and scores
             TextView t2 = new TextView(this);
             t2.setText("\t" + g.display2() + "\n");
-            //t2.setTypeface(null, Typeface.BOLD);
             layout.addView(t2);
 
             // Line Separator
@@ -136,7 +138,7 @@ public class NotificationBoard extends ActionBarActivity {
 
                 // Create the game and add it to the list
                 Game g = new Game (tournID, court, location, time, id, team1, team2);
-                games.add(g);
+                games.add(0, g);
 
                 // Clear the map between reads
                 newPost.clear();
